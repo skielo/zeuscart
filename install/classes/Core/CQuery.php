@@ -26,6 +26,8 @@
  * @package   		Core_CQuery
  * @category    	Core
  * @author    		AJ Square Inc Dev Team
+ * @modify history
+		- Skielo - Add spanish language 23/07/2014
  * @link   		http://www.zeuscart.com
  * @copyright 	        Copyright (c) 2008 - 2013, AJ Square, Inc.
  * @version   		Version 4.0	
@@ -738,7 +740,8 @@ class Core_CQuery
 		$result=mysql_query($sql);
 		$sql="INSERT INTO `language` (`lang_id`, `lang_name`, `lang_code`) VALUES
 		(1, 'English', 'en'),
-		(2, 'Chinese', 'cn')";
+		(2, 'Chinese', 'cn'),
+		(3, 'Spanish', 'es')";
 		$result=mysql_query($sql);
 
 
