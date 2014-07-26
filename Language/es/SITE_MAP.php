@@ -30,15 +30,15 @@
  */
 
 define('SITE_MAP',' Mapa del sitio');
-define('CATEGORIES','Categorias');
+define('CATEGORIES','Categor&iacute;as');
 define('SEARCH','Buscar');
 define('LIST_ALL_PRODUCT','Listado de Productos');
 define('FORGOT_PASSWORD','Olvido su password');
 define('ACCOUNT_DASHBOARD','Panel de Usuario');
-define('ACCOUNT_INFORMATION','Información de Usuario');
+define('ACCOUNT_INFORMATION','Informaci&oacute;n de Usuario');
 define('MY_ORDERS','Mis Ordenes');
 define('MY_PRODUCT_REVIEWS','Mis Revisiones de Productos');
-define('NEWS_LETTER_SUBSCRIPTION','Suscripción a News Letter');
+define('NEWS_LETTER_SUBSCRIPTION','Suscripci&oacute;n a News Letter');
 define('MY_WISHLIST','Mi Lista de Deseos');
 define('REGISTRATION','Registro');
 define('USER_REGISTRATION','Registro de usuario');

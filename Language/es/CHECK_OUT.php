@@ -31,10 +31,10 @@
 
 //check out header
 define('EMAIL_LOGIN','E-mail para ingreso');
-define('BILLING_ADDRESS','Dirección de Facturación');
-define('SHIPPING_ADDRESS','Dirección de Envio');
+define('BILLING_ADDRESS','Direcci&oacute;n de Facturaci&oacute;n');
+define('SHIPPING_ADDRESS','Direcci&oacute;n de Envio');
 define('SHIPPING_METHOD','Metodo de Envio');
-define('ORDER_CONFIRMATION','Confirmación de Orden');
+define('ORDER_CONFIRMATION','Confirmaci&oacute;n de Orden');
 define('PAYMENT_DETAILS','Detalles del Pago');
 
 //show cart page and  order confirmation
@@ -51,7 +51,7 @@ define('ENTER_COUPON','Si tiene un codigo de descuento ingreselo en el cuadro de
 define('GRAND_TOTAL','Total');
 define('CONTINUE_SHOPPING','Continuar Comprando');
 define('PROCEED_TO_CHECKOUT','Hacer el Checkout');
-define('SIZE','Tamaño');
+define('SIZE','TamaÃ±o');
 define('CHECK_OUT','Check out');
 
 
@@ -59,7 +59,7 @@ define('CHECK_OUT','Check out');
 
 //quick registration
 define('MEMBER_LOGIN','Ingreso de Miembros');
-define('E_MAIL_ADDRESS','Dirección de E-mail');
+define('E_MAIL_ADDRESS','Direcci&oacute;n de E-mail');
 define('PASSSWORD','Password');
 define('REMEMBER_ME','Recordarme');
 define('FORGOT_PASSWORD','Olvide el password');
@@ -72,19 +72,19 @@ define('REGISTER_HERE','Registrese Aqui');
 define('ACCOUNT_PROTECTION_TIPS','Consejos para proteger la cuenta');
 define('CHOSSE_A_STRONG_PASSWORD_AND_CHNAGE_IT_OFTEN.','Elija un password robusto y cambielo frecuentemente.');
 define('AVOID_USING_THE_SAME_PASSWORD_FOR_OTHER_ACCOUNTS','Evite utilizar el mismo password en muchas cuentas.');
-define('CREATE_A_UNIQUE_PASSWORD_BY_USING_A_COMBINATION_OF_LETTRES_AND_NUMBERS_THAT_ARE_NOT_EASILY_GUESSED','Cree un password unico utilizando una combinación de letras y numeros que no sean faciles de adivinar.');
+define('CREATE_A_UNIQUE_PASSWORD_BY_USING_A_COMBINATION_OF_LETTRES_AND_NUMBERS_THAT_ARE_NOT_EASILY_GUESSED','Cree un password unico utilizando una combinaci&oacute;n de letras y numeros que no sean faciles de adivinar.');
 
 
 
 //billing address and shipping address
-define('SELECT_FROM_PERVIOUS_ADDRESS','Seleccionar de una dirección anterior');
-define('ENTER_A_NEW_BILLING_ADDRESS','Ingresar una nueva dirección de facturación');
-define('ENTER_A_NEW_SHIPPING_ADDRESS','Ingresar una nueva dirección de envio');
+define('SELECT_FROM_PERVIOUS_ADDRESS','Seleccionar de una direcci&oacute;n anterior');
+define('ENTER_A_NEW_BILLING_ADDRESS','Ingresar una nueva direcci&oacute;n de facturaci&oacute;n');
+define('ENTER_A_NEW_SHIPPING_ADDRESS','Ingresar una nueva direcci&oacute;n de env&iacute;o');
 define('FIELDS_MARKED_WITH_AN','Los campos marcados con');
 define('ARE_REQUIRED','son requeridos');
 define('NAME','Nombre');
-define('COMPANY','Compañia');
-define('ADDRESS','Dirección');
+define('COMPANY','CompaÃ±ia');
+define('ADDRESS','Direcci&oacute;n');
 define('CITY','Ciudad');
 define('SUBURB','Barrio');
 define('STATEPROVINCE','Estado/Provincia');
@@ -94,14 +94,14 @@ define('PHONE','Telefono');
 define('MORE_ADDRESSES','Mas direcciones');
 
 //shipping method
-define('SELECT_SHIPPING_METHOD','Seleccionar Metodo de Envio');
+define('SELECT_SHIPPING_METHOD','Seleccionar Metodo de Env&Ã¡cute;o');
 define('SHIPPING','Envio');
 define('SHIPPING_COST','Costo de Envio');
 define('TOTAL_WEIGHT','Peso Total');
 define('REACH_THE_DESTINATION','Encontrar el Destino');
 
-define('PLEASE_SELECT_THE_SHIPPING_METHOD','Por favor seleccione un metodo de envio');
-define('PLEASE_SELECT_THE_SHIPPING_DURATION','Por favor seleccione la duración del envio');
+define('PLEASE_SELECT_THE_SHIPPING_METHOD','Por favor seleccione un metodo de env&iacute;o');
+define('PLEASE_SELECT_THE_SHIPPING_DURATION','Por favor seleccione la duraci&oacute;n del env&iacute;o');
 
 
 //payment method

@@ -38,7 +38,7 @@ define('FREQUENTLY_ASKED_QUESTIONS','Preguntas Frecuentes');
 define('LATEST_NEWS ','Ultimas Noticias');
 define('CONTACT_US','Contactenos');
 define('NAME','Nombre');
-define('EMAIL_ADDRESS','Dirección de Email');
+define('EMAIL_ADDRESS','Direcci&oacute;n de Email');
 define('ENQUIRY','Consulta');
 
 //messages

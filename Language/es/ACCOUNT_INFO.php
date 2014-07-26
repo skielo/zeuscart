@@ -30,10 +30,10 @@
  */
 
 
-define('EDIT_ACCOUNT_INFORMATION','Editar información de la cuenta');
+define('EDIT_ACCOUNT_INFORMATION','Editar informaci&oacute;n de la cuenta');
 define('FIRST_NAME','Nombre');
 define('LAST_NAME','Apellido');
-define('EMAIL_ADDRESS','Dirección de mail');
+define('EMAIL_ADDRESS','Direcci&oacute;n de mail');
 
 //messages
 define('YOUR_ACCOUNT_SUCCESSFULLY_UPDATED','Su cuenta ha sido actualizada satisfactoriamente !');

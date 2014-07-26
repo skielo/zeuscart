@@ -32,18 +32,18 @@
 define('GROUP_NAME','Nombre de Grupo');
 define('FIRST_NAME','Nombre');
 define('LAST_NAME','Apellido');
-define('COMPANY','Compañia');
-define('EMAIL_ADDRESS','Dirección de mail');
-define('ADDRESS','Dirección');
+define('COMPANY','CompaÃ±ia');
+define('EMAIL_ADDRESS','Direcci&oacute;n de mail');
+define('ADDRESS','Direcci&oacute;n');
 define('CITY','Ciudad');
 define('SUB_URB','Barrio');
 define('STATEPROVINCE','Estado/Provincia');
-define('COUNTRY','País');
-define('ZIPPOSTAL_CODE','Codígo Postal');
+define('COUNTRY','Pa&iacute;s');
+define('ZIPPOSTAL_CODE','Cod&iacute;go Postal');
 define('TELEPHONE','Telefono');
 define('FAX','Fax');
-define('BILLING_ADDRESS','Dirección de Facturación');
-define('SHIPPING_ADDRESS','Dirección de Envio');
+define('BILLING_ADDRESS','Direcci&oacute;n de Facturaci&oacute;n');
+define('SHIPPING_ADDRESS','Direcci&oacute;n de Env&iacute;o');
 
 
 

@@ -31,13 +31,13 @@
 
 
 define('FORGOT_YOUR_PASSWORD','Olvido su Password');
-define('E-MAIL_ADDRESS','Dirección de E-mail');
+define('E-MAIL_ADDRESS','Direcci&oacute;n de E-mail');
 define('SEND_MY_PASSWORD','Enviar mi Password');
 
 
 //messages
-define('PLEASE_ENTER_EMAIL_ADDRESS','Por favor ingrese una dirección de email');
-define('PASSWORD_HAS_BEEN_SENT_TO_YOUR_MAIL_SUCCESSFULLY','El Password ha sido enviado a su dirección de mail satisfactoreamente');
+define('PLEASE_ENTER_EMAIL_ADDRESS','Por favor ingrese una direcci&oacute;n de email');
+define('PASSWORD_HAS_BEEN_SENT_TO_YOUR_MAIL_SUCCESSFULLY','El Password ha sido enviado a su direcci&oacute;n de mail satisfactoreamente');
 define('INVALID_USER','Usuario incorrecto');
 
 

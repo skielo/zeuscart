@@ -38,7 +38,7 @@ define('STATUS','Estado');
 define('ACTION','Detalles');
 define('VIEW_ORDER','Ver Orden');
 define('SHOW','Mostrar');
-define('PER_PAGE','por pagina');
+define('PER_PAGE','por p&aacute;gina');
 define('ITEMS','items');
 define('NO_RATING','Sin Rating');
 define('VIEW_DETAILS','Ver Detalles');

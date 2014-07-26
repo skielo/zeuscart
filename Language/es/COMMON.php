@@ -73,16 +73,16 @@ define('CLICK_TO_SELECT','CLICK PARA SELECCIONAR');
 define('OR','O');
 define('SELECT','Seleccionar');
 //news letter
-define('GENERAL_SUBSCRIPTION','Suscripción General');
-define('REQUEST_NEWS_UPDATED','Tu pedido de suscripción a News Letter fue actualizado satisfactoreamente.');
-define('REQUEST_NEWS_NOT_UPDATED','Tu pedido de suscripción a News Letter no fue actualizado');
+define('GENERAL_SUBSCRIPTION','Suscripci&oacute;n General');
+define('REQUEST_NEWS_UPDATED','Tu pedido de suscripci&oacute;n a News Letter fue actualizado satisfactoreamente.');
+define('REQUEST_NEWS_NOT_UPDATED','Tu pedido de suscripci&oacute;n a News Letter no fue actualizado');
 
 
 //footer
 define('FREE_SHIPPING_ON_ORDERS_OVER','Envio gratuito en ordenes superiores a');
 define('SIGN_UP_FOR_OUT_NEWSLETTER','Ingrese para acceder al Newsletter');
 define('YOUR_EMAIL','Su Email');
-define('INFORMATION','Información');
+define('INFORMATION','Informaci&oacute;n');
 define('CUSTOMER_SERVICE','Servicios al Cliente');
 define('EXTRAS','Extras');
 define('CONNECT_WITH_US','Contactenos');
@@ -99,7 +99,7 @@ define('GIFT_VOUCHRES','Vouchers de regalo');
 define('CALL_US','Llamanos');
 define('EMAIL','Email');
 define('FAX','Fax');
-define('LOCATION','Ubicación');
+define('LOCATION','Ubicaci&oacute;n');
 
 //Error message
 define('REQUIRED','El campo requerido no puede ser vacio');
@@ -109,16 +109,16 @@ define('INVALID_USERNAME_OR_PASSWORD','Username or Password invalido');
 define('INVALID_USER_EMAIL','Email invalido');
 
 define('INVALID_ZIP_CODE','Codigo Postal incorrecto');
-define('INVALID_PHONE_NUMBER','Telefono incorrecto');
+define('INVALID_PHONE_NUMBER','Tel&eacute;fono incorrecto');
 define('PLEASE_SELECT_ONE_OF_EACH_OF_THE_RATING_ABOVE','Por favor seleccione una de las valuaciones de abajo');
 
 
 
 define('ALPHANUMERIC_NOT_ALLOED','Alfanumerico no permitido');
 define('SPECIAL_CHARACTERS_NOT_ALLOWED','Caracteres especiales no permitidos');
-define('PASSWORD_MINIMUM','El tamaño minimo para el Password es 6 & el maximo es 20 caracteres');
-define('ENTER_CORRECT_PASSWORD','Ingrese la confirmación del Password correcta');
-define('MINIMUM_LENGTH','El tamaño minimo es 3');
+define('PASSWORD_MINIMUM','El tamaÃ±o minimo para el Password es 6 & el maximo es 20 caracteres');
+define('ENTER_CORRECT_PASSWORD','Ingrese la confirmaci&oacute;n del Password correcta');
+define('MINIMUM_LENGTH','El tamaÃ±o minimo es 3');
 define('PLEASE_SELECT_TERMS','Por favor seleccione terminos');
 define('EMAIL_TRY','El Email ya existe!. Intentelo nuevamente.');
 define('USER_TRY','El Usuario ya existe!. Intentelo nuevamente.');
@@ -126,9 +126,9 @@ define('PASSWORD_MISMATCH','El Password no coincide');
 define('NAME_EXISTS','Ese nombre ya existe en la base de datos');
 define('ACCOUNT_NOT_CREATED','Cuenta no creada');
 define('NO_PRODUCT_FOUND','Producto no encontrado');
-define('SCBSCRIBE_NEWS_LETTER_ALREADY_EMAIL_EXISTS','Ya existe una suscripción a los News Letter para este EMAIL. Por favor ingrese uno diferente.');
-define('YOUR_REQUEST_FOR_NEWLETTER_ADDED','Su solicitud de suscripción a Newsletter fue creada satisfactoreamente.');
-define('INVALID_EMAIL_FOR_NEWSLETTER','Email invalido para la suscripción a News Letter');
+define('SCBSCRIBE_NEWS_LETTER_ALREADY_EMAIL_EXISTS','Ya existe una suscripci&oacute;n a los News Letter para este EMAIL. Por favor ingrese uno diferente.');
+define('YOUR_REQUEST_FOR_NEWLETTER_ADDED','Su solicitud de suscripci&oacute;n a Newsletter fue creada satisfactoreamente.');
+define('INVALID_EMAIL_FOR_NEWSLETTER','Email invalido para la suscripci&oacute;n a News Letter');
 define('PLEASE_ENTER_THE_VALID_QUANTITY','Por favor ingrese una cantidad valida');
 define('THE_PRODUCT_IS_OUT_OF_STOCK','El producto esta fuera de stock');
 define('NO_NEWS_FOUND','No se encontraron novedades!');

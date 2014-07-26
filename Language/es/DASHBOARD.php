@@ -36,7 +36,7 @@ define('VIEW_ALL','Ver Todo');
 define('YOU_ARE_CURRENTLY_NOT_SUBSCRIBED_TO_NEWSLETTER','Actualmente no esta suscripto al newsletter');
 define('YOU_ARE_CURRENTLY_SUBSCRIBED_TO_NEWSLETTER','Actualmente esta suscripto al newsletter');
 define('HELLO','Hola');
-define('DASHBOARD_DESCRIPTION','Desde el panel de su cuenta tiene la posibilidad de ver una instantanea de la actividad de su cuenta y actualizar su información de usuario. Eligiendo el link de abajo puede ver o editar su información.');
+define('DASHBOARD_DESCRIPTION','Desde el panel de su cuenta tiene la posibilidad de ver una instantanea de la actividad de su cuenta y actualizar su informaci&oacute;n de usuario. Eligiendo el link de abajo puede ver o editar su informaci&oacute;n.');
 define('RECENT_ORDER','Ordenes Recientes');
 define('VIEW_ALL','Ver Todo');
 define('ORDER','Orden');

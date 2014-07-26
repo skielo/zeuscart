@@ -35,26 +35,26 @@ define('PRODUCT_DETAIL','Detalle de Producto');
 define('SKU','SKU');
 define('AVALABILITY','Disponibilidad');
 define('TAGS','Tags');
-define('QUICK_OVERVIEW','Revisión Rapida');
+define('QUICK_OVERVIEW','Revisi&oacute;n Rapida');
 define('QUANTITY','Cantidad');
-define('PRODUCT_DESCRIPTION','Descripción de Producto');
+define('PRODUCT_DESCRIPTION','Descripci&oacute;n de Producto');
 define('REVIEWS','Revisiones');
 define('TIER_PRICE','Precio');
-define('ADDITIONAL_INFORMATION','Información Adicional');
+define('ADDITIONAL_INFORMATION','Informaci&oacute;n Adicional');
 
 define('BRAND','Marca');
 define('WEIGHT','Peso');
-define('DIMENSION','Dimención');
+define('DIMENSION','Dimenci&oacute;n');
 
 
 define('IN_STOCK','En Stock');
 define('OUT_OF_STOCK','Fuera de Stock');
 define('CAPTION','Caption');
-define('REVIEW','Revisión');
+define('REVIEW','Revisi&oacute;n');
 define('RATE_THIS_PRODUCT','Califica este Producto.');
-define('ENTER_THE_CODE_IN_THE_BOX_BELOW','Ingrese el codigo abajo.');
+define('ENTER_THE_CODE_IN_THE_BOX_BELOW','Ingrese el c&oacute;digo abajo.');
 define('TRY_ANOTHER_ONE','Pruebe algun otro');
-define('SUBMIT_REVIEW','Enviar la revisión');
+define('SUBMIT_REVIEW','Enviar la revisi&oacute;n');
 
 
 

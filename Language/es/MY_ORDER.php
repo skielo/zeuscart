@@ -35,10 +35,10 @@ define('DATE','Fecha');
 define('ORDER_TOTAL','Total de Orden');
 define('TRACK_ID','ID de Seguimiento');
 define('STATUS','Estado');
-define('ACTION','Acción');
+define('ACTION','Acci&oacute;n');
 define('VIEW_ORDER','Ver Orden');
 define('SHOW','Mostrar');
-define('PER_PAGE','por pagina');
+define('PER_PAGE','por p&aacute;gina');
 define('ITEMS','items');
 
 

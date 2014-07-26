@@ -37,12 +37,12 @@ define('YOUR_PERSONAL_DETAILS','Su detalle personal');
 define('DISPLAY_NAME','Mostrar Nombre');
 define('FIRST_NAME','Nombre');
 define('LAST_NAME','Apellido');
-define('EMAIL_ADDRESS','Direccion de mail');
+define('EMAIL_ADDRESS','Direcci&oacute;n de mail');
 define('YOUR_PASSWORD','Su Password');
 define('PASSSWORD','Password');
 define('CONFIRM_PASSWORD','Confirmar Password');
-define('YOUR_ADDRESS','Su Dirección');
-define('ADDRESS','Dirección');
+define('YOUR_ADDRESS','Su Direcci&oacute;n');
+define('ADDRESS','DirecciÃ³n');
 define('CITY','Ciudad');
 define('STATE/PROVINCE','Estado/Provincia');
 define('ZIP/POSTAL_CODE','Codigo Postal');
@@ -57,6 +57,6 @@ define('AND','y');
 define('PRIVACY_POLICY','Politica de Privacidad');
 
 //message
-define('REGISTER_SUCCESS','La cuenta ha sido creada satisfactoriamente y el link de confirmación fue enviado a su dirección de mail.');
+define('REGISTER_SUCCESS','La cuenta ha sido creada satisfactoriamente y el link de confirmaci&oacute;n fue enviado a su direcci&oacute;n de mail.');
 
 ?>

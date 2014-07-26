@@ -29,23 +29,23 @@
  * @version   		Version 1.0
  */
 
-define('SHIP_DURATION','Duración del envio');
+define('SHIP_DURATION','Duraci&oacute;n del envio');
 define('ORDER_DETAILS','Detalle de la orden');
 define('PAYMENT_DETAILS','Detalle de pago');
-define('SHIPPING_DETAILS','Detalle de envio');
-define('ORDER_INFORMATION','Información de la orden');
+define('SHIPPING_DETAILS','Detalle de env&iacute;o');
+define('ORDER_INFORMATION','Informaci&oacute;n de la orden');
 define('ORDER_ID','Id de Orden');
 define('ORDER_STATUS','Estado de la Orden');
 define('ORDER_TOTAL','Total de la Orden');
 define('ORDER_DATE','Fecha de la Orden');
 define('CLOSE_DATE','Fecha de Cierre');
-define('PAID_THROUGH','Pagado a tráves');
-define('SHIP_THROUGH','Envio  a tráves');
-define('SHIP_TRACK_ID','Número de envio');
-define('BILLING_ADDRESS','Dirección de facturación');
-define('SHIPPING_ADDRESS','Dirección de envio');
+define('PAID_THROUGH','Pagado a tr&aacute;ves');
+define('SHIP_THROUGH','Envio  a tr&aacute;ves');
+define('SHIP_TRACK_ID','NÃºmero de env&iacute;o');
+define('BILLING_ADDRESS','Direcci&oacute;n de facturaci&oacute;n');
+define('SHIPPING_ADDRESS','Direcci&oacute;n de env&iacute;o');
 define('ITEM_DETAILS','Detalle del Item');
-define('SIZE','Tamaño');
+define('SIZE','Tama&nacute;o');
 define('PRICE','Precio');
 define('QUANTITY','Cantidad');
 define('TOTAL','Total');
