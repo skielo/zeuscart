@@ -304,7 +304,7 @@ class Display_DFeaturedItems
 
 				if($arr[$i]['product_status']==1)
 				{
-					$imagetag='<img src="'.$_SESSION['base_url'].'/images/ribbion/new.png" alt="new">';
+					$imagetag='<img src="'.$_SESSION['base_url'].'/assets/img/ribbion/new.png" alt="new">';
 				}
 				
 
