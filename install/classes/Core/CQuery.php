@@ -1655,7 +1655,7 @@ class Core_CQuery
 		PRIMARY KEY (`user_id`)
 		) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2";
 		$result=mysql_query($sql);
-		$sql="INSERT INTO `users_table` (`user_id`, `user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`) VALUES(1, 'demouser', 'demouser', 'demouser', 'demouser@ajsquare.net', 'e10adc3949ba59abbe56e057f20f883e', 1, 'IN', 1, '2013-09-12', 1, 1, '192.168.1.69', '', 0)";
+		$sql="INSERT INTO `users_table` (`user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`) VALUES('demouser', 'demouser', 'demouser', 'demouser@ajsquare.net', 'e10adc3949ba59abbe56e057f20f883e', 1, 'IN', 1, '2013-09-12', 1, 1, '192.168.1.69', '', 0)";
 		$result=mysql_query($sql);
 
 

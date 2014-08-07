@@ -24,17 +24,17 @@
  *
  * @package   		Language
  * @author    		Skielo
- * @link   		http://www.twitter.com/skielo
- * @copyright 	        Copyright (c) 2014, Ezequiel Reyno.
+ * @link   		    http://www.twitter.com/skielo
+ * @copyright 	    Copyright (c) 2014, Ezequiel Reyno.
  * @version   		Version 1.0
  */
 
 
 define('REGISTER','Registro');
-define('FIELDS_MARKED_WITH_AN','Campos marcados con');
+define('FIELDS_MARKED_WITH_AN','Campos marcados con ');
 define('ARE_REQUIRED','son requeridos');
 define('YOUR_PERSONAL_DETAILS','Su detalle personal');
-define('DISPLAY_NAME','Mostrar Nombre');
+define('DISPLAY_NAME','Nombre para mostrar');
 define('FIRST_NAME','Nombre');
 define('LAST_NAME','Apellido');
 define('EMAIL_ADDRESS','Direcci&oacute;n de mail');
@@ -42,14 +42,14 @@ define('YOUR_PASSWORD','Su Password');
 define('PASSSWORD','Password');
 define('CONFIRM_PASSWORD','Confirmar Password');
 define('YOUR_ADDRESS','Su Direcci&oacute;n');
-define('ADDRESS','Dirección');
+define('ADDRESS','Direcci&oacute;n');
 define('CITY','Ciudad');
 define('STATE/PROVINCE','Estado/Provincia');
-define('ZIP/POSTAL_CODE','Codigo Postal');
-define('COUNTRY','Pais');
+define('ZIP/POSTAL_CODE','C&oacute;digo Postal');
+define('COUNTRY','Pa&iacute;s');
 define('NEWSLETTER','Newsletter');
-define('SUBCRIBE','Suscribite');
-define('YES','Si');
+define('SUBCRIBE','Suscribirse');
+define('YES','S&iacute;');
 define('NO',' No');
 define('I_ACCEPT_THE','Acepto');
 define('USER_AGREEMENT','Concentimiento de Usuario');

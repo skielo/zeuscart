@@ -28,7 +28,7 @@
  * @category	Core
  * @author		ZeusCart Team
  * @link		http://www.zeuscart.com
-  * @copyright 		Copyright (c) 2008 - 2013, AjSquare, Inc.
+ * @copyright 		Copyright (c) 2008 - 2013, AjSquare, Inc.
  * @version  		Version 4.0
  */
 
@@ -262,7 +262,7 @@ class Core_CUserOrder
 			{
 
 				$output = "<div class='alert alert-error'>
-				<button data-dismiss='alert' class='close' type='button'>×</button>
+				<button data-dismiss='alert' class='close' type='button'>x</button>
 				Please Select An Valid  Category
 				</div>";
 	
@@ -284,7 +284,7 @@ class Core_CUserOrder
 			elseif(trim($_POST['selProduct'])== '' || empty($_POST['selProduct']) || !is_int((int)$_POST['selProduct']) && $_POST['selQty']== '' && $_POST['selCategory']!= '' )
 			{
 				$output ="<div class='alert alert-error'>
-				<button data-dismiss='alert' class='close' type='button'>×</button>
+				<button data-dismiss='alert' class='close' type='button'>x</button>
 				Please Select An Valid Product
 				</div>";
 
@@ -295,7 +295,7 @@ class Core_CUserOrder
 			elseif($_POST['selQty'] == '' || empty($_POST['selQty']) || !is_int((int)$_POST['selQty']) || $_POST['selQty']==0 && $_POST['selProduct'] !='' && $_POST['selCategory'] != '')
 			{
 				$output ="<div class='alert alert-error'>
-				<button data-dismiss='alert' class='close' type='button'>×</button>
+				<button data-dismiss='alert' class='close' type='button'>x</button>
 				Please Select An Valid Quantity
 				</div>";
 
@@ -444,15 +444,8 @@ class Core_CUserOrder
 		if((int)$customers_id!=0 && $customers_id!='' && count($_SESSION['ProductDetails'])>0)
 		{
 				$orders_status=1;
-				$sql="insert into orders_table
-				( customers_id, shipping_name, shipping_company, shipping_street_address, 
-				shipping_suburb, shipping_city, shipping_postcode, shipping_state, shipping_country, 
-				billing_name, billing_company, billing_street_address, billing_suburb, 
-				billing_city, billing_postcode, billing_state, billing_country, payment_method, 
-				shipping_method, coupon_code,  date_purchased, orders_date_closed, orders_status, order_total, 
-				order_tax, ipn_id, ip_address,shipment_id_selected)
-				values
-				('".$customers_id."','".$shipping_name."','".$shipping_company."','".$shipping_street_address."','".$shipping_suburb."','".$shipping_city."','".$shipping_postcode."','".$shipping_state."','".$shipping_country."','".$billing_name."','".$billing_company."','".$billing_street_address."','".$billing_suburb."','".$billing_city."','".$billing_postcode."','".$billing_state."','".$billing_country."','".$payment_method."','".$shipping_method."','".$coupon_code."','".$date_purchased."','".$orders_date_closed."','".$orders_status."','".$order_total."','".$order_tax."','".$paypal_ipn_id."','".$ip_address."','1')";
+				$sql= "INSERT INTO `orders_table`(`customers_id`,`shipping_name`,`shipping_company`,`shipping_street_address`,`shipping_suburb`,`shipping_city`,`shipping_postcode`,`shipping_state`,`shipping_country`,`billing_name`,`billing_company`,`billing_street_address`,`billing_suburb`,`billing_city`,`billing_postcode`,`billing_state`,`billing_country`,`payment_method`,`shipping_method`,`coupon_code`,`date_purchased`,`orders_date_closed`,`orders_status`,`order_total`,`order_tax`,`order_ship`,`currency_id`,`ipn_id`,`ip_address`,`shipment_id_selected`,`shipment_track_id`)
+VALUES('".$customers_id."','".$shipping_name."','".$shipping_company."','".$shipping_street_address."','".$shipping_suburb."','".$shipping_city."','".$shipping_postcode."','".$shipping_state."','".$shipping_country."','".$billing_name."','".$billing_company."','".$billing_street_address."','".$billing_suburb."','".$billing_city."','".$billing_postcode."','".$billing_state."','".$billing_country."','".$payment_method."','".$shipping_method."','".$coupon_code."','".$date_purchased."','".$orders_date_closed."','".$orders_status."','".$order_total."','".$order_tax."', 0, 0, '".$paypal_ipn_id."','".$ip_address."', 1,  '')";
 				$obj=new Bin_Query();
 				if($obj->updateQuery($sql))
 				{
@@ -474,7 +467,7 @@ class Core_CUserOrder
 							}
 							else
 							{
-								 $sql="INSERT INTO addressbook_table(user_id,contact_name,company,address,city,suburb,state,country,zip)VALUES('".$customers_id."','".$billing_name."','".$billing_company."','".$billing_street_address."','".$billing_city."','".$billing_suburb."','".$billing_state."','".$billing_country."','".$billing_postcode."')";
+								 $sql= "insert into addressbook_table (user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values('".$customers_id."','".$billing_name."','','','".$billing_company."','','".$billing_street_address."','".$billing_city."','".$billing_suburb."','".$billing_state."','".$billing_country."','".$billing_postcode."','','')";
 								$obj=new Bin_Query();
 								$obj->updateQuery($sql);
 								$bill_address_id=mysql_insert_id();
@@ -501,7 +494,7 @@ class Core_CUserOrder
 							}
 							else
 							{
-								 $sql="INSERT INTO addressbook_table(user_id ,contact_name,company,address,city,suburb,state,country,zip)VALUES('".$customers_id."','".$shipping_name."','".$shipping_company."','".$shipping_street_address."','".$shipping_city."','".$shipping_suburb."','".$shipping_state."','".$shipping_country."','".$shipping_postcode."')";
+								 $sql="insert into addressbook_table (user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values('".$customers_id."','".$shipping_name."','','','".$shipping_company."','','".$shipping_street_address."','".$shipping_city."','".$shipping_suburb."','".$shipping_state."','".$shipping_country."','".$shipping_postcode."','','')";
 								$obj=new Bin_Query();
 								$obj->updateQuery($sql);
 
@@ -555,7 +548,8 @@ class Core_CUserOrder
 
 								$product_unit_price=$row['price'];
 								$shipping_cost=$row['shipCost'];
-								$sql="insert into order_products_table (order_id, product_id, product_qty, product_unit_price,shipping_cost) values  ('".$maxid."','".$product_id."','".$product_qty."','".$product_unit_price."','".$shipping_cost."')"."\n";
+                                $sql="INSERT INTO `collinsmarket`.`order_products_table`(`order_id`,`product_id`,`variation_id`,`product_qty`,`product_unit_price`,`shipping_cost`)
+VALUES ('".$maxid."','".$product_id."', 0,'".$product_qty."','".$product_unit_price."','".$shipping_cost."')";
 								$obj=new Bin_Query();
 								$obj->updateQuery($sql);
 							}
@@ -565,13 +559,13 @@ class Core_CUserOrder
 			unset($_SESSION['ProductDetails']);
 			UNSET($_SESSION['errorvalues']);		
 			return '<div class="alert alert-success">
-			<button data-dismiss="alert" class="close" type="button">×</button> Order Created Successfully!</div>';			
+			<button data-dismiss="alert" class="close" type="button">x</button> Order Created Successfully!</div>';			
 		}
 		else
 		{
 			
 			return '<div class="alert alert-error">
-			<button data-dismiss="alert" class="close" type="button">×</button> No Products available in the  cart. Order was not placed successfully.!</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button> No Products available in the  cart. Order was not placed successfully.!</div>';	
 
 		}			
 	}

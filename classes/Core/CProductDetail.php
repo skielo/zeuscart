@@ -107,7 +107,7 @@ class Core_CProductDetail
 			{
 				$_SESSION['reviewResult']='<div class="bs-docs-example">
 				<div class="alert alert-error">
-				<button data-dismiss="alert" class="close" type="button">×</button>Captcha Mismatch</div></div>';
+				<button data-dismiss="alert" class="close" type="button">x</button>Captcha Mismatch</div></div>';
 				$prodid = $_GET['prodid'];				
 				header("Location:?do=prodetail&action=showprod&prodid=".$prodid);
 				exit;
@@ -131,17 +131,17 @@ class Core_CProductDetail
 				$commentqry->executeQuery($sqlComment);
 				$_SESSION['reviewResultSuccess']='<div class="bs-docs-example">
 				<div class="alert alert-success">
-				<button data-dismiss="alert" class="close" type="button">×</button>Your Review is Posted for Moderation!</div></div>';
+				<button data-dismiss="alert" class="close" type="button">x</button>Your Review is Posted for Moderation!</div></div>';
 			}
 			else
 				$_SESSION['reviewResultSuccess']='<div class="bs-docs-example">
 				<div class="alert alert-error">
-				<button data-dismiss="alert" class="close" type="button">×</button>Review already Posted!</div></div>';
+				<button data-dismiss="alert" class="close" type="button">x</button>Review already Posted!</div></div>';
 		}	
 		else if(isset($_POST['reviewbutton']))
 		$_SESSION['reviewResult']='<div class="bs-docs-example">
 				<div class="alert alert-error">
-				<button data-dismiss="alert" class="close" type="button">×</button>Reviews cannot be empty!</div></div>';
+				<button data-dismiss="alert" class="close" type="button">x</button>Reviews cannot be empty!</div></div>';
 			
 		
 		$this->lastViewedProducts($_GET['prodid']);

@@ -26,9 +26,10 @@
  * @package   		Core_CUserRegistration
  * @category    	Core
  * @author    		AJ Square Inc Dev Team
- * @link   		http://www.zeuscart.com
-  * @copyright 	        Copyright (c) 2008 - 2013, AJ Square, Inc.
- * @version   		Version 4.0
+ * @link   			http://www.zeuscart.com
+ * @copyright 	    Copyright (c) 2008 - 2013, AJ Square, Inc.
+ * @version   		Version 4.0.1
+ * 
  */
 class Core_CUserRegistration
 {
@@ -64,98 +65,95 @@ class Core_CUserRegistration
 			 $output['val'] = $Err->values;
 			 $output['msg'] = $Err->messages;
 		}
-		
 		else
 		{
 			if( $displayname!= '' and $firstname  != '' and $lastname != '' and $email != '' and $pswd != '')
 			{
 				$characters='8';	
 				$possible = '1234567890';
-					$code = '';
-					$i = 0;
-					while ($i < $characters) {
-						$code .= substr($possible, mt_rand(0, strlen($possible)-1), 1);
-						$i++;
-			
-					}
+				$code = '';
+				$i = 0;
+				while ($i < $characters) {
+					$code .= substr($possible, mt_rand(0, strlen($possible)-1), 1);
+					$i++;
+		
+				}
 
 				$pswd=md5($pswd);
-				$sql = "insert into users_table (user_display_name,user_fname,user_lname,user_email,user_pwd,user_status,user_doj,user_country,ipaddress,user_group,confirmation_code) values('".$displayname."','".$firstname."','".$lastname."','".$email."','".$pswd."',0,'".$date."','".$country."','".$_SERVER['REMOTE_ADDR']."','1','".$code."')";
+				//Make a correction in INSERT sentence, all columns are mandatory.
+				$sql = "INSERT INTO `users_table` (`user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`, `confirmation_code`) 
+				VALUES('".$displayname."','".$firstname."','".$lastname."', '".$email."','".$pswd."', '1', '" .$country ."', 1,'".date("Y-m-d")."', 0, 0, '".$_SERVER['REMOTE_ADDR']."', '', 0, '".$code."')";
 				$obj = new Bin_Query();
 				if($obj->updateQuery($sql))
 				{
-		
-				
-				//add address detail in address book
-				$sq="select user_id from users_table where user_email='$email' and user_pwd='$pswd'";
-				$qry1=new Bin_Query();
-				$qry1->executeQuery($sq);
-				if(count($qry1->records)>0)
-				{
-					$newuserid=$qry1->records[0]['user_id'];
-					$adrsql="insert into addressbook_table(user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values($newuserid,'Primary','$firstname','$lastname','','$email','$address','$city','','$state','$country','$zipcode','','')";
-					$qry1->updateQuery($adrsql);
-				
-					$sql = "insert into newsletter_subscription_table(email,status)values('".$email."',".$newsletter.")";
-					if($obj->updateQuery($sql))
-					{
-	
-						$result = '<div class="alert alert-success">
-						<button data-dismiss="alert" class="close" type="button">×</button>
-						'.Core_CLanguage::_(REGISTER_SUCCESS).'
-						</div>';
+    				//add address detail in address book
+    				$sq="select user_id from users_table where user_email='$email' and user_pwd='$pswd'";
+    				$qry1=new Bin_Query();
+    				$qry1->executeQuery($sq);
+    				if(count($qry1->records)>0)
+    				{
+    					$newuserid=$qry1->records[0]['user_id'];
+    					$adrsql="insert into addressbook_table(user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values($newuserid,'Primary','$firstname','$lastname','','$email','$address','$city','','$state','$country','$zipcode','','')";
+    					$qry1->updateQuery($adrsql);
+    				
+    					$sql = "insert into newsletter_subscription_table(email,status)values('".$email."',".$newsletter.")";
+    					if($obj->updateQuery($sql))
+    					{
+    	
+    						$result = '<div class="alert alert-success">
+    						<button data-dismiss="alert" class="close" type="button">×</button>
+    						'.Core_CLanguage::_(REGISTER_SUCCESS).'
+    						</div>';
+    
+    						//admin details
+    						$sqllogo="select set_id,site_logo,site_moto,admin_email from admin_settings_table where set_id='1'";
+    						$objlogo=new Bin_Query();
+    						$objlogo->executeQuery($sqllogo);
+    						$site_logo=$objlogo->records[0]['site_logo'];			
+    						$site_title=$objlogo->records[0]['site_moto'];			
+    						$admin_email=$objlogo->records[0]['admin_email'];
+    
+    
+    						//select mail setting
+    						$sqlMail="SELECT * FROM mail_messages_table WHERE mail_msg_id=1 AND mail_user='0'";
+    						$objMail=new Bin_Query();
+    						$objMail->executeQuery($sqlMail);
+    						$message=$objMail->records[0]['mail_msg'];
+    						$title=$objMail->records[0]['mail_msg_title'];
+    						$subject=$objMail->records[0]['mail_msg_subject'];
+    
+    						$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https://': 'http://';
+    						$dir = (dirname($_SERVER['PHP_SELF']) == "\\")?'':dirname($_SERVER['PHP_SELF']);
+    						$site = $protocol.$_SERVER['HTTP_HOST'].$dir;
+    						
+    						$site_logo=$site.'/'.$site_logo;
+    						$link = $site.'/?do=registerconfirm&confirm_code='.$code;
+    						$confirm_link = '<p style="font-family:Arial, Helvetica, sans-serif, "Myriad Pro", Calibri; color: rgb(85, 85, 85); font-size:12px; margin:0; padding:0;">Click the following link to active your account</p><a href="'.$link.'">'.$link.'</a>';
+    						$site_logo	=$site_logo;
+    
+    						$message = str_replace("[title]",$site_title,$message);
+    						$message = str_replace("[logo]",$site_logo,$message);
+    						$message = str_replace("[firstname]",$firstname,$message);
+    						$message = str_replace("[lastname]",$lastname,$message);
+    						$message = str_replace("[confirm_link]",$confirm_link,$message);
+    					
+    						$message = str_replace("[user_name]",$email,$message);		$message = str_replace("[password]",$_POST['txtpwd'],$message);	$message = str_replace("[site_email]",$admin_email,$message);	
+    				
+    			
+    						Core_CUserRegistration::sendingMail($email,$title,$message);
+    					}
+    					else
+    						$result ='<div class="alert alert-error">
+    							<button data-dismiss="alert" class="close" type="button">×</button>
+    							'.Core_CLanguage::_(ACCOUNT_NOT_CREATED).'
+    							</div>';
 
-						//admin details
-						$sqllogo="select set_id,site_logo,site_moto,admin_email from admin_settings_table where set_id='1'";
-						$objlogo=new Bin_Query();
-						$objlogo->executeQuery($sqllogo);
-						$site_logo=$objlogo->records[0]['site_logo'];			
-						$site_title=$objlogo->records[0]['site_moto'];			
-						$admin_email=$objlogo->records[0]['admin_email'];
-
-
-						//select mail setting
-						$sqlMail="SELECT * FROM mail_messages_table WHERE mail_msg_id=1 AND mail_user='0'";
-						$objMail=new Bin_Query();
-						$objMail->executeQuery($sqlMail);
-						$message=$objMail->records[0]['mail_msg'];
-						$title=$objMail->records[0]['mail_msg_title'];
-						$subject=$objMail->records[0]['mail_msg_subject'];
-
-						$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https://': 'http://';
-						$dir = (dirname($_SERVER['PHP_SELF']) == "\\")?'':dirname($_SERVER['PHP_SELF']);
-						$site = $protocol.$_SERVER['HTTP_HOST'].$dir;
-						
-						$site_logo=$site.'/'.$site_logo;
-						$link = $site.'/?do=registerconfirm&confirm_code='.$code;
-						$confirm_link = '<p style="font-family:Arial, Helvetica, sans-serif, "Myriad Pro", Calibri; color: rgb(85, 85, 85); font-size:12px; margin:0; padding:0;">Click the following link to active your account</p><a href="'.$link.'">'.$link.'</a>';
-						$site_logo	=$site_logo;
-
-						$message = str_replace("[title]",$site_title,$message);
-						$message = str_replace("[logo]",$site_logo,$message);
-						$message = str_replace("[firstname]",$firstname,$message);
-						$message = str_replace("[lastname]",$lastname,$message);
-						$message = str_replace("[confirm_link]",$confirm_link,$message);
-					
-						$message = str_replace("[user_name]",$email,$message);		$message = str_replace("[password]",$_POST['txtpwd'],$message);	$message = str_replace("[site_email]",$admin_email,$message);	
-				
-			
-						Core_CUserRegistration::sendingMail($email,$title,$message);
-					}
-					else
-						$result ='<div class="alert alert-error">
-							<button data-dismiss="alert" class="close" type="button">×</button>
-							'.Core_CLanguage::_(ACCOUNT_NOT_CREATED).'
-							</div>';
-
-
-					
-					
-				}else
-					$result = '<div class="alert alert-error">
-							<button data-dismiss="alert" class="close" type="button">×</button>
-							'.Core_CLanguage::_(ACCOUNT_NOT_CREATED).'
-							</div>';
+    				}
+    				else
+    					$result = '<div class="alert alert-error">
+    							<button data-dismiss="alert" class="close" type="button">×</button>
+    							'.Core_CLanguage::_(ACCOUNT_NOT_CREATED).'
+    							</div>';
 			}
 			else
 				$result = '<div class="alert alert-error">
@@ -920,8 +918,8 @@ class Core_CUserRegistration
 			
 			if($recordCheck['user_id'] == '')
 			{
-				
-				 $sqlUser = "INSERT INTO users_table (user_fname,user_lname,user_display_name 	,user_email,user_pwd,ipaddress,user_doj,user_status,social_link_id,is_from_social_link) VALUES ('".$firstname."','".$lastname."','".$username."','".$email."','".base64_encode($password)."','".$_SERVER['REMOTE_ADDR']."','".date("Y-m-d")."','1', '".$fb_id."','1')";
+                $sqlUser = "INSERT INTO `users_table` (`user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`, `confirmation_code`) 
+                VALUES('".$username."','".$firstname."','".$lastname."', '".$email."','".base64_encode($password)."', '1', '" .$country ."', 1,  '".date("Y-m-d")."', 0, 0, '".$_SERVER['REMOTE_ADDR']."', '".$fb_id ."', '1', 0)";
 				$queryUser = mysql_query($sqlUser);
 				
 				$user_id = mysql_insert_id();
@@ -1063,10 +1061,8 @@ class Core_CUserRegistration
 			
 			if($recordCheck['user_id'] == '')
 			{
-				
-
-				 $sqlUser ="INSERT INTO users_table(user_fname,user_lname,user_display_name,user_email,user_pwd,user_doj,user_status,is_from_social_link) VALUES('".$firstname."','".$firstname."','".$firstname."','".$email."','".base64_encode($password)."','".date("Y-m-d")."','1','2')"; 
-
+                $sqlUser = "INSERT INTO `users_table` (`user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`, `confirmation_code`) 
+                VALUES('".$firstname."','".$firstname."','".$lastname."', '".$email."','".base64_encode($password)."', '1', '" .$country ."', 1, '".date("Y-m-d")."', 0, 0, '".$_SERVER['REMOTE_ADDR']."', '2', '1', 0)";
 				$queryUser = new Bin_Query();
 				$queryUser->executeQuery($sqlUser);
 				
@@ -1221,8 +1217,8 @@ class Core_CUserRegistration
 			
 			if($recordCheck['user_id'] == '')
 			{
-				
-				$sqlUser = "INSERT INTO users_table (user_fname,user_lname,user_display_name 	,user_email,user_pwd,ipaddress,user_doj,user_status,social_link_id,is_from_social_link) VALUES ('".$firstname."','".$lastname."','".$firstname."','".$email."','".base64_encode($password)."','".$_SERVER['REMOTE_ADDR']."','".date("Y-m-d")."','1', '".$google_id."','3')";
+                $sqlUser = "INSERT INTO `users_table` (`user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`, `confirmation_code`) 
+                VALUES('".$firstname."','".$firstname."','".$lastname."', '".$email."','".base64_encode($password)."', '1', '" .$country ."', 1, '".date("Y-m-d")."', 0, 0, '".$_SERVER['REMOTE_ADDR']."', '".$google_id ."', '1', 0)";
 				$queryUser = mysql_query($sqlUser);
 				
 				$user_id = mysql_insert_id();

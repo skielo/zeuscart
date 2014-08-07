@@ -26,9 +26,9 @@
  * @package  		Core_CAdminAddUsrRegsitration
  * @category  		Core
  * @author    		AjSquareInc Dev Team
- * @link   		http://www.zeuscart.com
-   * @copyright 		Copyright (c) 2008 - 2013, AjSquare, Inc.
- * @version  		Version 4.0
+ * @link   		    http://www.zeuscart.com
+ * @copyright 		Copyright (c) 2008 - 2013, AjSquare, Inc.
+ * @version  		Version 4.0.1
  */
 
 
@@ -52,33 +52,66 @@ class Core_CAdminAddUsrRegsitration
 		$date = date('Y-m-d');
 		/*if($newsletter == '')
 			$newsletter = 0;*/
+		//address details
+        $address= $_POST['txtaddr'];
+        $city= $_POST['txtcity'];
+        $state= $_POST['txtState'];
+        $zipcode= $_POST['txtzipcode'];
+        $country= $_POST['selCountry'];
 			
 		if(count($Err->messages) > 0)
 		{
 			 $output['val'] = $Err->values;
 			 $output['msg'] = $Err->messages;
 		}
-		
 		else
 		{
 			if( $displayname!= '' and $firstname  != '' and $lastname != '' and $email != '' and $pswd != '')
 			{
-				
-				$sql = "insert into users_table 			(user_display_name,user_fname,user_lname,user_email,user_pwd,user_status,user_doj) values('".$displayname."','".$firstname."','".$lastname."','".$email."','".$pswd."',1,'".$date."')";
-			$obj = new Bin_Query();
+                $sql = "INSERT INTO `users_table` (`user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`, `confirmation_code`) 
+                VALUES('".$displayname."','".$firstname."','".$lastname."', '".$email."','".$pswd."', '1', '" .$country ."', 1, '".$date."', 0, 0, '".$_SERVER['REMOTE_ADDR']."', '', 0, 0)";
+			    $obj = new Bin_Query();
 			
-			if($obj->updateQuery($sql))
-			{
-				$result = "Added Successfully";
-				return $result;
+                if($obj->updateQuery($sql))
+                {
+                    $result = '<div class="alert alert-error">
+                            <button data-dismiss="alert" class="close" type="button">×</button>
+                            '.Core_CLanguage::_(ACCOUNT_CREATED).'
+                            </div>';
+                }
+                else
+                {
+                    $result = '<div class="alert alert-error">
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        '.Core_CLanguage::_(ACCOUNT_NOT_CREATED).'
+                        </div>';
+                    return $result;
+                }
+                
+                //add address detail in address book
+                $sq="select user_id from users_table where user_email='$email' and user_pwd='$pswd'";
+                $qry1=new Bin_Query();
+                $qry1->executeQuery($sq);
+                
+                if(count($qry1->records)>0)
+                {
+                    $newuserid=$qry1->records[0]['user_id'];
+                    $adrsql="insert into addressbook_table(user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values($newuserid,'Primary','$firstname','$lastname','','$email','$address','$city','','$state','$country','$zipcode','','')";
+                    $qry1->updateQuery($adrsql);
+
+                }else
+                    $result = '<div class="alert alert-error">
+                            <button data-dismiss="alert" class="close" type="button">×</button>
+                            '.Core_CLanguage::_(ACCOUNT_NOT_CREATED).'
+                            </div>';
 			}
-			else
-			{
-				$result = "Not Inserted";
-				return $result;
-			}
-			}
+            else
+                $result = '<div class="alert alert-error">
+                        <button data-dismiss="alert" class="close" type="button">×</button>
+                        '.Core_CLanguage::_(ACCOUNT_NOT_CREATED).'
+                        </div>';
 		}
+        return $result;
    }
    
    /**

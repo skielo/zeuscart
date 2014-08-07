@@ -36,7 +36,7 @@ define('MY_CART','Mi Carrito');
 define('CHECKOUT','Checkout');
 define('LOGIN','Ingresar');
 define('LOGOUT','Salir');
-define('WELCOME','Bienvenido');
+define('WELCOME','Bienvenido ');
 define('SEARCH_ENTER_ITEM_NAME_HERE','Ingrese el nombre del producto a buscar aqui');
 define('SEARCH','Buscar');
 define('SEARCH_RESULT','Resultado de la busqueda');
@@ -79,7 +79,7 @@ define('REQUEST_NEWS_NOT_UPDATED','Tu pedido de suscripci&oacute;n a News Letter
 
 
 //footer
-define('FREE_SHIPPING_ON_ORDERS_OVER','Envio gratuito en ordenes superiores a');
+define('FREE_SHIPPING_ON_ORDERS_OVER','Envio gratuito en ordenes superiores a ');
 define('SIGN_UP_FOR_OUT_NEWSLETTER','Ingrese para acceder al Newsletter');
 define('YOUR_EMAIL','Su Email');
 define('INFORMATION','Informaci&oacute;n');
@@ -108,17 +108,17 @@ define('INVALID_PASWORD','Password invalido');
 define('INVALID_USERNAME_OR_PASSWORD','Username or Password invalido');
 define('INVALID_USER_EMAIL','Email invalido');
 
-define('INVALID_ZIP_CODE','Codigo Postal incorrecto');
+define('INVALID_ZIP_CODE','C&oacute;digo Postal incorrecto');
 define('INVALID_PHONE_NUMBER','Tel&eacute;fono incorrecto');
 define('PLEASE_SELECT_ONE_OF_EACH_OF_THE_RATING_ABOVE','Por favor seleccione una de las valuaciones de abajo');
 
 
 
-define('ALPHANUMERIC_NOT_ALLOED','Alfanumerico no permitido');
+define('ALPHANUMERIC_NOT_ALLOED','Alfan&uacute;merico no permitido');
 define('SPECIAL_CHARACTERS_NOT_ALLOWED','Caracteres especiales no permitidos');
-define('PASSWORD_MINIMUM','El tamaño minimo para el Password es 6 & el maximo es 20 caracteres');
+define('PASSWORD_MINIMUM','El tama&nacute;o minimo para el Password es 6 & el maximo es 20 caracteres');
 define('ENTER_CORRECT_PASSWORD','Ingrese la confirmaci&oacute;n del Password correcta');
-define('MINIMUM_LENGTH','El tamaño minimo es 3');
+define('MINIMUM_LENGTH','El tama&nacute;o minimo es 3');
 define('PLEASE_SELECT_TERMS','Por favor seleccione terminos');
 define('EMAIL_TRY','El Email ya existe!. Intentelo nuevamente.');
 define('USER_TRY','El Usuario ya existe!. Intentelo nuevamente.');

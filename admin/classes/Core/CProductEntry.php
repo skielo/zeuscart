@@ -194,8 +194,9 @@
 		$imgfile= $_FILES['ufile']['name'][0];
 		$description=addslashes(stripslashes(trim($description)));		
 		$description=str_replace(array("\r","\n",'\r','\n'),'', $description);	
-	
-		$sql="insert into products_table(category_id, sku, title, description, brand, model, msrp,price,cse_enabled,cse_key, weight, dimension, thumb_image, image, shipping_cost, status, tag, meta_desc, meta_keywords, intro_date, is_featured,product_status,alias)values('".$category_id."','".$sku."','".$title."','".$description."','".$brand."','".$model."','".$msrp_org."','".$price."','".$cse_enabled."','".$csekeyid."','".$weight."','".$dimension."','".$thumb_image."','".$image."','".$shipping_cost."','".$status."','".$tag."','".$meta_desc."','".$meta_keywords."','".$intro_date."','".$is_feautured."','".$product_status."','".$sluggable."')";	
+	    //Make a refactor due a lack of mandatory parameters in the insert statment
+		$sql="INSERT INTO `products_table` (`category_id`,`sku`,`title`,`alias`,`description`,`brand`,`model`,`msrp`,`price`,`cse_enabled`,`cse_key`,`weight`,`dimension`,`thumb_image`,`image`,`large_image_path`,`shipping_cost`,`status`,`tag`,`meta_desc`,`meta_keywords`,`intro_date`,`is_featured`,`digital`,`gift`,`digital_product_path`,`has_variation`,`product_status`,`deleted_reason`)
+VALUES ('".$category_id."','".$sku."','".$title."','".$sluggable."','".$description."','".$brand."','".$model."','".$msrp_org."','".$price."','".$cse_enabled."','".$csekeyid."','".$weight."','".$dimension."','".$thumb_image."','".$image."','','".$shipping_cost."','".$status."','".$tag."','".$meta_desc."','".$meta_keywords."','".$intro_date."','".$is_feautured."', 0, 0,'',0,'".$product_status."','')";	
 				
 		$obj=new Bin_Query();
 			
@@ -362,7 +363,7 @@
 
 				
 			$_SESSION['update_msg']='<div class="alert alert-success">
-				<button data-dismiss="alert" class="close" type="button">×</button>Product <b>'.$title.'</b> has been inserted successfully</div>';
+				<button data-dismiss="alert" class="close" type="button">x</button>Product <b>'.$title.'</b> has been inserted successfully</div>';
 			header('Location:?do=manageproducts');
 			exit;		
 		}
@@ -374,7 +375,7 @@
 			@unlink(ROOT_FOLDER.$thumb_image);
 			@unlink(ROOT_FOLDER.$large_image);	
 			return '<div class="alert alert-error">
-				<button data-dismiss="alert" class="close" type="button">×</button>Unable to create product</div>';	
+				<button data-dismiss="alert" class="close" type="button">x</button>Unable to create product</div>';	
 		 }
 		
 	}
@@ -818,7 +819,8 @@
 		if(move_uploaded_file($digitfilename,$digitfilepath))
 		{
 		   
-			 $sql="insert into products_table(category_id,sku, title, description,msrp,price,cse_enabled,thumb_image, image, shipping_cost, status, tag, meta_desc, meta_keywords, intro_date, is_featured,digital,digital_product_path,alias)values('".$category_id."','".$sku."','".$title."','".addslashes(htmlentities($description))."','".$msrp_org."','".$price."',0,'".$thumb_image."','".$image."',0,'".$status."','".$tag."','".$meta_desc."','".$meta_keywords."','".$intro_date."','".$is_feautured."',1,'".$digitfilepath."','".$sluggable."')";
+			 $sql="INSERT INTO `products_table` (`category_id`,`sku`,`title`,`alias`,`description`,`brand`,`model`,`msrp`,`price`,`cse_enabled`,`cse_key`,`weight`,`dimension`,`thumb_image`,`image`,`large_image_path`,`shipping_cost`,`status`,`tag`,`meta_desc`,`meta_keywords`,`intro_date`,`is_featured`,`digital`,`gift`,`digital_product_path`,`has_variation`,`product_status`,`deleted_reason`)
+VALUES ('".$category_id."','".$sku."','".$title."','".$sluggable."','".addslashes(htmlentities($description))."','".$brand."','".$model."','".$msrp_org."','".$price."',0,'".$csekeyid."','','','".$thumb_image."','".$image."','',0,'".$status."','".$tag."','".$meta_desc."','".$meta_keywords."','".$intro_date."','".$is_feautured."', 1, 0,'".$digitfilepath."',0,0,'')";
 			
 			$obj=new Bin_Query();
 			
@@ -883,7 +885,7 @@
 				}
 			
 				$_SESSION['update_msg']='<div class="alert alert-success">
-				<button data-dismiss="alert" class="close" type="button">×</button>Product <b>'.$title.'</b> has been inserted successfully</div>';
+				<button data-dismiss="alert" class="close" type="button">x</button>Product <b>'.$title.'</b> has been inserted successfully</div>';
 				header('Location:?do=manageproducts');			
 				exit;		
 			}
@@ -895,7 +897,7 @@
 			@unlink(ROOT_FOLDER.$thumb_image);
 			@unlink(ROOT_FOLDER.$large_image);	
 			return '<div class="alert alert-error">
-				<button data-dismiss="alert" class="close" type="button">×</button>Unable to create product</div>';	
+				<button data-dismiss="alert" class="close" type="button">x</button>Unable to create product</div>';	
 		 }
 		
 	}
@@ -987,8 +989,9 @@
 		
 		$imgfile= $_FILES['ufile']['name'][0];
 
-			 $sql="insert into products_table(category_id,sku, title, description,msrp,price,cse_enabled,thumb_image, image, shipping_cost, status, tag, meta_desc, meta_keywords, intro_date, is_featured,gift,alias)values('".$category_id."','".$sku."','".$title."','".addslashes(htmlentities($description))."','".$msrp_org."','".$price."',0,'".$thumb_image."','".$image."',0,'".$status."','".$tag."','".$meta_desc."','".$meta_keywords."','".$intro_date."','".$is_feautured."',1,'".$sluggable."')";
-			
+			 $sql="INSERT INTO `products_table` (`category_id`,`sku`,`title`,`alias`,`description`,`brand`,`model`,`msrp`,`price`,`cse_enabled`,`cse_key`,`weight`,`dimension`,`thumb_image`,`image`,`large_image_path`,`shipping_cost`,`status`,`tag`,`meta_desc`,`meta_keywords`,`intro_date`,`is_featured`,`digital`,`gift`,`digital_product_path`,`has_variation`,`product_status`,`deleted_reason`)
+VALUES ('".$category_id."','".$sku."','".$title."','".$sluggable."','".$description."','".$brand."','".$model."','".$msrp_org."','".$price."','".$cse_enabled."','','".$weight."','','".$thumb_image."','".$image."','',0,'".$status."','".$tag."','".$meta_desc."','".$meta_keywords."','".$intro_date."','".$is_feautured."', 0, 1,'',0,0,'')";
+
 			$obj=new Bin_Query();
 			
 			if($obj->updateQuery($sql))
@@ -1051,7 +1054,7 @@
 				}
 			
 				$_SESSION['update_msg']='<div class="alert alert-success">
-				<button data-dismiss="alert" class="close" type="button">×</button>Product <b>'.$title.'</b> has been inserted successfully</div>';
+				<button data-dismiss="alert" class="close" type="button">x</button>Product <b>'.$title.'</b> has been inserted successfully</div>';
 				header('Location:?do=manageproducts');			
 				exit;		
 		}
@@ -1062,7 +1065,7 @@
 		@unlink(ROOT_FOLDER.$thumb_image);
 		@unlink(ROOT_FOLDER.$large_image);	
 		return '<div class="alert alert-error">
-			<button data-dismiss="alert" class="close" type="button">×</button>Unable to create product</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button>Unable to create product</div>';	
 		}
 			
 		

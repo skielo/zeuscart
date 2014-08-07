@@ -61,10 +61,8 @@ class Core_CProductRegistration
 		$tag= $_POST['txttag'];
 		if($catid!= '' and $sku != '' and $prodtitle != '' and $proddesc != '' and $prodbrand!= '' and $prodmodel != '' and $prodprice != '' and $prodmsrp != '' and $prodweight  != '' and $proddim  != '' and $prodshipcost != '' and $tag!= '')
 		{
-				$sql = "insert into products_table (category_id,sku,title,description,brand,model,price,msrp,weight,
-				dimension,thumb_image,image,shipping_cost,status,tag) values('".$catid."','".$sku."','"
-				.$prodtitle."','".$proddesc."','".$prodbrand."','".$prodmodel."','".$prodprice."','".$prodmsrp."','".$prodweight
-				."','".$proddim."','".$prodshipcost."',0,'".$tag;
+				$sql = "INSERT INTO `products_table` (`category_id`,`sku`,`title`,`alias`,`description`,`brand`,`model`,`msrp`,`price`,`cse_enabled`,`cse_key`,`weight`,`dimension`,`thumb_image`,`image`,`large_image_path`,`shipping_cost`,`status`,`tag`,`meta_desc`,`meta_keywords`,`intro_date`,`is_featured`,`digital`,`gift`,`digital_product_path`,`has_variation`,`product_status`,`deleted_reason`)
+VALUES ('".$catid."','".$sku."','".$prodtitle."','".$sluggable."','".$proddesc."','".$prodbrand."','".$prodmodel."','".$prodmsrp."','".$prodprice."',0,'','".$prodweight."','".$dimension."','".$proddim."','','','".$prodshipcost."',0,'".$tag."','','','',0, 0, 0,'',0,0,'')";
 				
 			$obj = new Bin_Query();
 			
@@ -166,7 +164,9 @@ class Core_CProductRegistration
 		$shipping_cost=$_POST['shippingcost'];
 		$status=$_POST['status'];
 		$tag=$_POST['tag'];
-		$sql='insert into products_table(category_id, sku, title, description, brand, model, msrp,price,cse_enabled, weight, dimension, thumb_image, image, shipping_cost, status, tag, meta_desc, meta_keywords, intro_date, is_featured)values('.$category_id.','.$sku.','.$title.','.$description.','.$brand.','.$model.','.$msrp.','.$price.','.$cse_enabled.','.$weight.','.$dimension.','.$thumb_image.','.$image.','.$shipping_cost.','.$status.','.$tag.','.$meta_desc.','.$meta_keywords.','.$intro_date.','.$is_featured.')';
+		$sql="INSERT INTO `products_table` (`category_id`,`sku`,`title`,`alias`,`description`,`brand`,`model`,`msrp`,`price`,`cse_enabled`,`cse_key`,`weight`,`dimension`,`thumb_image`,`image`,`large_image_path`,`shipping_cost`,`status`,`tag`,`meta_desc`,`meta_keywords`,`intro_date`,`is_featured`,`digital`,`gift`,`digital_product_path`,`has_variation`,`product_status`,`deleted_reason`)
+VALUES ('".$category_id."','".$sku."','".$title."','','".$description."','".$brand."','".$model."','".$msrp."','".$price."','".$cse_enabled."','','".$weight."','".$dimension."','".$thumb_image."','".$image."','','".$shipping_cost."','".$status."','".$tag."','".$meta_desc."','".$meta_keywords."','".$intro_date."','".$is_feautured."', 0, 0,'',0,0,'')";
+
 	   $obj=new Bin_Query();
   	   $obj->updateQuery($sql);
 	}

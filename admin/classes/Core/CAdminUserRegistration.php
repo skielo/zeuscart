@@ -26,9 +26,9 @@
  * @package  		Core_CAdminUserRegistration
  * @category  		Core
  * @author    		AjSquareInc Dev Team
- * @link   		http://www.zeuscart.com
-   * @copyright 		Copyright (c) 2008 - 2013, AjSquare, Inc.
- * @version  		Version 4.0
+ * @link   		    http://www.zeuscart.com
+ * @copyright 		Copyright (c) 2008 - 2013, AjSquare, Inc.
+ * @version  		Version 4.0.1
  */
 
 
@@ -750,76 +750,77 @@ class Core_CAdminUserRegistration
 			if( $displayname!= '' and $firstname  != '' and $lastname != '' and $email != '' and $pswd != '')
 			{
 				
-				$pswd=md5($pswd);
-				$sql = "insert into users_table (user_display_name,user_fname,user_lname,user_email,user_pwd,user_status,user_doj,user_country,user_group) values('".$displayname."','".$firstname."','".$lastname."','".$email."','".$pswd."',1,'".$date."','".$country."','".$group."')"; 
+				$pswd=md5($pswd); 
+                $sql = "INSERT INTO `users_table` (`user_display_name`, `user_fname`, `user_lname`, `user_email`, `user_pwd`, `user_group`, `user_country`, `user_status`, `user_doj`, `billing_address_id`, `shipping_address_id`, `ipaddress`, `social_link_id`, `is_from_social_link`, `confirmation_code`) 
+                VALUES('".$displayname."','".$firstname."','".$lastname."', '".$email."','".$pswd."', '1', '" .$country ."', 1, '".$date."', 0, 0, '".$_SERVER['REMOTE_ADDR']."', '', 0, 0)";
 				$obj = new Bin_Query();
 			
 			
-			if($obj->updateQuery($sql))
-			{
-				
-				//add address detail in address book
-				$sq="select user_id from users_table where user_email='$email' and user_pwd='$pswd'";
-				$qry1=new Bin_Query();
-				$qry1->executeQuery($sq);
-				if(count($qry1->records)>0)
-				{
-					$newuserid=$qry1->records[0]['user_id'];
-					$adrsql="insert into addressbook_table(user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values($newuserid,'$displayname','$firstname','$lastname','','$email','$address','$city','','$state','$country','$zipcode','','')"; 
-					$qry1->updateQuery($adrsql);
-				
-				$sql = "insert into newsletter_subscription_table(email,status)values('".$email."',".$newsletter.")";
-				if($obj->updateQuery($sql))
-				{
-					$result = '<div class="alert alert-success">
-   					<button type="button" class="close" data-dismiss="alert">×</button> <strong> well done !</strong> Account has been Created Successfully</div>';
-					
-						$sqllogo="select set_id,site_logo,site_moto,admin_email from admin_settings_table where set_id='1'";
-						$objlogo=new Bin_Query();
-						$objlogo->executeQuery($sqllogo);
-						$site_logo=$objlogo->records[0]['site_logo'];				
-						$site_title=$objlogo->records[0]['site_moto'];				
-						$admin_email=$objlogo->records[0]['admin_email'];
-
-
-						//select mail setting
-						$sqlMail="SELECT * FROM mail_messages_table WHERE mail_msg_id=1 AND mail_user='0'";
-						$objMail=new Bin_Query();
-						$objMail->executeQuery($sqlMail);
-						$message=$objMail->records[0]['mail_msg'];
-						$title=$objMail->records[0]['mail_msg_title'];
-						$subject=$objMail->records[0]['mail_msg_subject'];
-
-						$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https://': 'http://';
-						$dir = (dirname($_SERVER['PHP_SELF']) == "\\")?'':dirname($_SERVER['PHP_SELF']);
-						$site = $protocol.$_SERVER['HTTP_HOST'].$dir;
-						
-						$site_logo=$site.'/'.$site_logo;
-						
-						$site_logo	=$site_logo;
-
-						$message = str_replace("[title]",$site_title,$message);
-						$message = str_replace("[logo]",$site_logo,$message);
-						$message = str_replace("[firstname]",$firstname,$message);
-						$message = str_replace("[lastname]",$lastname,$message);
-											
-						$message = str_replace("[user_name]",$email,$message);		$message = str_replace("[password]",$_POST['txtpwd'],$message);	$message = str_replace("[site_email]",$admin_email,$message);	
-
-					Core_CAdminUserRegistration::sendingMail($email,$title,$message);
-					echo "<script> top.location = top.location; </script>";
-           				
-				}
-				else
-					$result = '<div class="alert alert-error">
-    					<button type="button" class="close" data-dismiss="alert">×</button> Account Not Created</div>';
-				}
-				else
-					$result = '<div class="alert alert-error">
-   					 <button type="button" class="close" data-dismiss="alert">×</button> Account Not Created</div>';
-			}
-			else
-				$result = '<div class="alert alert-error">
-   				 <button type="button" class="close" data-dismiss="alert">×</button> Account Not Created</div>';
+    			if($obj->updateQuery($sql))
+    			{
+    				
+    				//add address detail in address book
+    				$sq="select user_id from users_table where user_email='$email' and user_pwd='$pswd'";
+    				$qry1=new Bin_Query();
+    				$qry1->executeQuery($sq);
+    				if(count($qry1->records)>0)
+    				{
+    					$newuserid=$qry1->records[0]['user_id'];
+    					$adrsql="insert into addressbook_table(user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values($newuserid,'$displayname','$firstname','$lastname','','$email','$address','$city','','$state','$country','$zipcode','','')"; 
+    					$qry1->updateQuery($adrsql);
+    				
+        				$sql = "insert into newsletter_subscription_table(email,status)values('".$email."',".$newsletter.")";
+        				if($obj->updateQuery($sql))
+        				{
+        					$result = '<div class="alert alert-success">
+           					<button type="button" class="close" data-dismiss="alert">×</button> <strong> well done !</strong> Account has been Created Successfully</div>';
+        					
+        						$sqllogo="select set_id,site_logo,site_moto,admin_email from admin_settings_table where set_id='1'";
+        						$objlogo=new Bin_Query();
+        						$objlogo->executeQuery($sqllogo);
+        						$site_logo=$objlogo->records[0]['site_logo'];				
+        						$site_title=$objlogo->records[0]['site_moto'];				
+        						$admin_email=$objlogo->records[0]['admin_email'];
+        
+        
+        						//select mail setting
+        						$sqlMail="SELECT * FROM mail_messages_table WHERE mail_msg_id=1 AND mail_user='0'";
+        						$objMail=new Bin_Query();
+        						$objMail->executeQuery($sqlMail);
+        						$message=$objMail->records[0]['mail_msg'];
+        						$title=$objMail->records[0]['mail_msg_title'];
+        						$subject=$objMail->records[0]['mail_msg_subject'];
+        
+        						$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https://': 'http://';
+        						$dir = (dirname($_SERVER['PHP_SELF']) == "\\")?'':dirname($_SERVER['PHP_SELF']);
+        						$site = $protocol.$_SERVER['HTTP_HOST'].$dir;
+        						
+        						$site_logo=$site.'/'.$site_logo;
+        						
+        						$site_logo	=$site_logo;
+        
+        						$message = str_replace("[title]",$site_title,$message);
+        						$message = str_replace("[logo]",$site_logo,$message);
+        						$message = str_replace("[firstname]",$firstname,$message);
+        						$message = str_replace("[lastname]",$lastname,$message);
+        											
+        						$message = str_replace("[user_name]",$email,$message);		$message = str_replace("[password]",$_POST['txtpwd'],$message);	$message = str_replace("[site_email]",$admin_email,$message);	
+        
+        					Core_CAdminUserRegistration::sendingMail($email,$title,$message);
+        					echo "<script> top.location = top.location; </script>";
+                   				
+        				}
+        				else
+        					$result = '<div class="alert alert-error">
+            					<button type="button" class="close" data-dismiss="alert">×</button> Account Not Created</div>';
+    				}
+    				else
+    					$result = '<div class="alert alert-error">
+       					 <button type="button" class="close" data-dismiss="alert">×</button> Account Not Created</div>';
+    			}
+    			else
+    				$result = '<div class="alert alert-error">
+       				 <button type="button" class="close" data-dismiss="alert">×</button> Account Not Created</div>';
 			}
 		}
 		return $result;

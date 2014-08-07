@@ -41,9 +41,9 @@ class Core_CPaymentGateways
 		* 
 		* @return string
 		*/
-    		function insertShipping()
+    	function insertShipping()
 		{
-		    	$orderdetails=array();		
+		    $orderdetails=array();		
 
 			$orderdetails['txtname']=$_POST['txtname'];
 			$orderdetails['txtcompany']=$_POST['txtcompany'];
@@ -297,15 +297,7 @@ class Core_CPaymentGateways
 
 			if((((int)$customers_id!=0) || ($customers_id!='')) && ($_SESSION['checkout_amount']!=''))
 			{
-					$sql="insert into orders_table
-					( customers_id, shipping_name, shipping_company, shipping_street_address, 
-					shipping_suburb, shipping_city, shipping_postcode, shipping_state, shipping_country, 
-					billing_name, billing_company, billing_street_address, billing_suburb, 
-					billing_city, billing_postcode, billing_state, billing_country, payment_method, 
-					shipping_method, coupon_code,  date_purchased, orders_date_closed, orders_status, order_total, 
-					order_tax, ipn_id, ip_address,shipment_id_selected,order_ship,currency_id)
-					values
-					('".$customers_id."','".$shipping_name."','".$shipping_company."','".$shipping_street_address."','".$shipping_suburb."','".$shipping_city."','".$shipping_postcode."','".$shipping_state."','".$shipping_country."','".$billing_name."','".$billing_company."','".$billing_street_address."','".$billing_suburb."','".$billing_city."','".$billing_postcode."','".$billing_state."','".$billing_country."','".$payment_method."','".$shipping_method."','".$coupon_code."','".$date_purchased."','".$orders_date_closed."','".$orders_status."','".$order_total."','".$order_tax."','".$ipn_id."','".$ip_address."','".$shipment_id_selected."','".$shipping_cost."','".$currecncy_id."')";
+					$sql="INSERT INTO `orders_table`(`customers_id`,`shipping_name`,`shipping_company`,`shipping_street_address`,`shipping_suburb`,`shipping_city`,`shipping_postcode`,`shipping_state`,`shipping_country`,`billing_name`,`billing_company`,`billing_street_address`,`billing_suburb`,`billing_city`,`billing_postcode`,`billing_state`,`billing_country`,`payment_method`,`shipping_method`,`coupon_code`,`date_purchased`,`orders_date_closed`,`orders_status`,`order_total`,`order_tax`,`order_ship`,`currency_id`,`ipn_id`,`ip_address`,`shipment_id_selected`,`shipment_track_id`) VALUES('".$customers_id."','".$shipping_name."','".$shipping_company."','".$shipping_street_address."','".$shipping_suburb."','".$shipping_city."','".$shipping_postcode."','".$shipping_state."','".$shipping_country."','".$billing_name."','".$billing_company."','".$billing_street_address."','".$billing_suburb."','".$billing_city."','".$billing_postcode."','".$billing_state."','".$billing_country."','".$payment_method."','".$shipping_method."','".$coupon_code."','".$date_purchased."','".$orders_date_closed."','".$orders_status."','".$order_total."','".$order_tax."','".$shipping_cost."','" .$currecncy_id ."','".$ipn_id ."','".$ip_address."', '".$shipment_id_selected."', '')";
 									
 					$obj=new Bin_Query();
 					if($obj->updateQuery($sql))
@@ -313,7 +305,9 @@ class Core_CPaymentGateways
 						
 							$orderid=$obj->insertid;
 		
-							$sql_insert_payment="INSERT INTO payment_transactions_table (payment_gateway_id ,paid_amount ,transaction_id ,transaction_date,order_id) VALUES (".$payment_method.",".$order_total.",'".$ipn_id."','".$trans_date."',".$orderid.")"; 
+							$sql_insert_payment= "INSERT INTO `payment_transactions_table`(`payment_gateway_id`,`paid_amount`,`transaction_id`,`transaction_date`,`order_id`)
+VALUES(".$payment_method.",".$order_total.",'".$ipn_id."','".$trans_date."',".$orderid.")";
+
 							$obj_insert_payment=new Bin_Query();
 							$obj_insert_payment->updateQuery($sql_insert_payment);
 							
@@ -388,16 +382,16 @@ class Core_CPaymentGateways
 										
 										if($row['variation_id']==0 || $row['variation_id']=='')
 										{
-											$sql="insert into order_products_table (order_id, product_id,product_qty, product_unit_price,shipping_cost) values  ('".$maxid."','".$product_id."','".$product_qty."','".$product_unit_price."','".$shipping_cost."')"."\n";
-											$obj=new Bin_Query();
-											$obj->updateQuery($sql);
+											$sql="INSERT INTO `order_products_table`(`order_id`,`product_id`,`variation_id`,`product_qty`,`product_unit_price`,`shipping_cost`)
+VALUES ('".$maxid."','".$product_id."', 0,'".$product_qty."','".$product_unit_price."','".$shipping_cost."')";
 										}
 										else
 										{
-											$sql="insert into order_products_table (order_id, product_id,product_qty, product_unit_price,shipping_cost,variation_id) values  ('".$maxid."','".$product_id."','".$product_qty."','".$product_unit_price."','".$shipping_cost."','".$row['variation_id']."')"."\n";
-											$obj=new Bin_Query();
-											$obj->updateQuery($sql);
+											$sql="INSERT INTO `order_products_table`(`order_id`,`product_id`,`variation_id`,`product_qty`,`product_unit_price`,`shipping_cost`)
+VALUES ('".$maxid."','".$product_id."', '".$row['variation_id']."','".$product_qty."','".$product_unit_price."','".$shipping_cost."')";
 										}
+                                        $obj=new Bin_Query();
+                                        $obj->updateQuery($sql);
 																								// update gift voucher 
 										if($row['gift_product']==1)
 										{
@@ -637,15 +631,7 @@ class Core_CPaymentGateways
 			if((((int)$customers_id!=0) || ($customers_id!='')) && ($_SESSION['checkout_amount']!=''))
 			{
 					
-					$sql="insert into orders_table
-					( customers_id, shipping_name, shipping_company, shipping_street_address, 
-					shipping_suburb, shipping_city, shipping_postcode, shipping_state, shipping_country, 
-					billing_name, billing_company, billing_street_address, billing_suburb, 
-					billing_city, billing_postcode, billing_state, billing_country, payment_method, 
-					shipping_method, coupon_code, date_purchased, orders_date_closed, orders_status, order_total, 
-					order_tax, ipn_id, ip_address)
-					values
-					('".$customers_id."','".$shipping_name."','".$shipping_company."','".$shipping_street_address."','".$shipping_suburb."','".$shipping_city."','".$shipping_postcode."','".$shipping_state."','".$shipping_country."','".$billing_name."','".$billing_company."','".$billing_street_address."','".$billing_suburb."','".$billing_city."','".$billing_postcode."','".$billing_state."','".$billing_country."','".$payment_method."','".$shipping_method."','".$coupon_code."','".$date_purchased."','".$orders_date_closed."','".$orders_status."','".$order_total."','".$order_tax."','".$ipn_id."','".$ip_address."')";
+					$sql="INSERT INTO `orders_table`(`customers_id`,`shipping_name`,`shipping_company`,`shipping_street_address`,`shipping_suburb`,`shipping_city`,`shipping_postcode`,`shipping_state`,`shipping_country`,`billing_name`,`billing_company`,`billing_street_address`,`billing_suburb`,`billing_city`,`billing_postcode`,`billing_state`,`billing_country`,`payment_method`,`shipping_method`,`coupon_code`,`date_purchased`,`orders_date_closed`,`orders_status`,`order_total`,`order_tax`,`order_ship`,`currency_id`,`ipn_id`,`ip_address`,`shipment_id_selected`,`shipment_track_id`) VALUES('".$customers_id."','".$shipping_name."','".$shipping_company."','".$shipping_street_address."','".$shipping_suburb."','".$shipping_city."','".$shipping_postcode."','".$shipping_state."','".$shipping_country."','".$billing_name."','".$billing_company."','".$billing_street_address."','".$billing_suburb."','".$billing_city."','".$billing_postcode."','".$billing_state."','".$billing_country."','".$payment_method."','".$shipping_method."','".$coupon_code."','".$date_purchased."','".$orders_date_closed."','".$orders_status."','".$order_total."','".$order_tax."', 0, 0,'".$ipn_id ."','".$ip_address."', 1, '')";
 					
 					$obj=new Bin_Query();
 					if($obj->updateQuery($sql))
@@ -703,12 +689,10 @@ class Core_CPaymentGateways
   
 									$product_unit_price=$row['product_unit_price'];
 									$shipping_cost=$row['shipping_cost'];
-							 $sql="insert into order_products_table (order_id, product_id, product_qty, product_unit_price,shipping_cost) values  ('".$maxid."','".$product_id."','".$product_qty."','".$product_unit_price."','".$shipping_cost."')"."\n";
+									$sql="INSERT INTO `collinsmarket`.`order_products_table`(`order_id`,`product_id`,`variation_id`,`product_qty`,`product_unit_price`,`shipping_cost`)
+VALUES ('".$maxid."','".$product_id."', 0,'".$product_qty."','".$product_unit_price."','".$shipping_cost."')";
 									$obj=new Bin_Query();
 									$obj->updateQuery($sql);
-									
-									
-									
 									
 								}
 								$res1=$obj2->records;
