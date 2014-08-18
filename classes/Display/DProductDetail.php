@@ -868,12 +868,15 @@ class Display_DProductDetail
 		{
 			$output.='<span>'.Core_CLanguage::_(AVALABILITY).' :  '.Core_CLanguage::_(OUT_OF_STOCK).'</span>';
 		}
-
+		
+        $removal= array("rn");
+        $desc= str_replace($removal, "", trim($arr[0]['description']));
+        
 		$output.='</td>
 		<td align="left" valign="top"><h1>'.$_SESSION['currencysetting']['selected_currency_settings']['currency_tocken'].''.$arr[0]['msrp'].'</h1></td>
 		</tr>
 		</table></li>
-		<li><h2>'.Core_CLanguage::_(QUICK_OVERVIEW).'</h2><p>' .$arr[0]['description'] .'</p></li>
+		<li><h2>'.Core_CLanguage::_(QUICK_OVERVIEW).'</h2><p>' .$desc .'</p></li>
 		<li><form method="post"	action="'.$_SESSION['base_url'].'/index.php?do=addtocartfromproductdetail&prodid='.$arr[0]['product_id'].'" name="frmcart" target="_parent">
 		<table width="100%" border="0">
 		<tr>
