@@ -246,9 +246,7 @@ class Display_DProductDetail
 				$output.='</tr>
 				
 				</li>
-						<li><h2>'.Core_CLanguage::_('QUICK_OVERVIEW').':</h2><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisl nec nunc sollicitudin bibendum. Pellentesque orci
-
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet nisl nec nunc sollicitudin bibendum. Pellentesque orci.</p></li>
+						<li><h2>'.Core_CLanguage::_('QUICK_OVERVIEW').':</h2><p>' .$desc .'</p></li>
 				<li>
 				<table width="100%" border="0">
 		<tr>';
@@ -834,7 +832,7 @@ class Display_DProductDetail
 	{
 		
 		 $output='
-			<button class="close" data-dismiss="modal" data-target="#myModal">×</button>
+			<button class="close" data-dismiss="modal" data-target="#myModal">x</button>
 			<div class="container">
 			<h2><a href="'.$_SESSION['base_url'].'/index.php?do=prodetail&action=showprod&prodid='.$arr[0]['product_id'].'" target="_parent">'.$arr[0]['title'].'</h2></a>';
 				$output.='<div>&nbsp;</div>
@@ -875,7 +873,7 @@ class Display_DProductDetail
 		<td align="left" valign="top"><h1>'.$_SESSION['currencysetting']['selected_currency_settings']['currency_tocken'].''.$arr[0]['msrp'].'</h1></td>
 		</tr>
 		</table></li>
-		<li><h2>'.Core_CLanguage::_(QUICK_OVERVIEW).'</h2><p>This midi dress has been made from stretch jersey. The details include: a scoop neckline and sleeveless styling with an open back and latticed deatiling. The dress has been cut with a bodycon fit.</p></li>
+		<li><h2>'.Core_CLanguage::_(QUICK_OVERVIEW).'</h2><p>' .$arr[0]['description'] .'</p></li>
 		<li><form method="post"	action="'.$_SESSION['base_url'].'/index.php?do=addtocartfromproductdetail&prodid='.$arr[0]['product_id'].'" name="frmcart" target="_parent">
 		<table width="100%" border="0">
 		<tr>

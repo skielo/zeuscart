@@ -73,7 +73,7 @@ class Model_MDisplayCategoryList
 		$output['totalproducts']=Core_CAdminHome::totalProducts();		
 		$output['enabledproducts']=Core_CAdminHome::enabledProducts();
 		$output['disabledproducts']=Core_CAdminHome::disabledProducts();
-		i$output['displaycategory'] =   Core_CDisplayCategoryList::dispCategory();		
+		$output['displaycategory'] =   Core_CDisplayCategoryList::dispCategory();		
 		$output['pendingorders']=(int)Core_CAdminHome::pendingOrders();
 		$output['processingorders']=(int)Core_CAdminHome::processingOrders();
 		$output['deliveredorders']=(int)Core_CAdminHome::deliveredOrders();		
