@@ -68,15 +68,17 @@ class Core_CPromotionalCodes
 			for($i=0;$i < count($user_ids);$i++)
 			{
 				
-				$sql = "select user_email from users_table where user_id=".$user_ids[$i];
+				$sql = "select user_email,user_display_name from users_table where user_id=".$user_ids[$i];
 				$obj = new Bin_Query();
 				if($obj->executeQuery($sql))
 				{
-					$mailids =$obj->records[0]['user_email']; 
+					$mailids =$obj->records[0]['user_email'];
+                    $user =  $obj->records[0]['user_display_name'];
 				
 					//echo $mailids.'-'.$user_ids[$i];
+					//TODO: Review the sent email. Include de display name into the email to personalice it 
 					$title='Coupons';
-					$mail_content='Dear Customer , <br> You Have Received a Coupon. <br> Coupon code - '.$coupon_code;
+					$mail_content='Dear ' .$user .', <br> You Have Received a Coupon. <br> Coupon code - '.$coupon_code;
 					$default=new Core_CPromotionalCodes();
 					$default->sendingMail($mailids,$title,$mail_content);
 					
@@ -93,14 +95,14 @@ class Core_CPromotionalCodes
 			}
 			$_SESSION['coupon_id']='';
 			return '<div class="alert alert-success">
-			<button data-dismiss="alert" class="close" type="button">×</button> Coupon Code Send To Selected Users Successfullly.</div>';
+			<button data-dismiss="alert" class="close" type="button">x</button> Coupon Code Send To Selected Users Successfullly.</div>';
 		}
 		else
 		{
 			$_SESSION['coupon_id']='';
 			if($_GET['page']=='')
 				return '<div class="alert alert-error">
-			<button data-dismiss="alert" class="close" type="button">×</button> Select Atleast One User.</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button> Select Atleast One User.</div>';	
 		}
 		
 		
@@ -239,10 +241,10 @@ class Core_CPromotionalCodes
 		
 			if($obj->updateQuery($sql))
 				return '<div class="alert alert-success">
-			<button data-dismiss="alert" class="close" type="button">×</button> Coupon Status Updated Successfullly.</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button> Coupon Status Updated Successfullly.</div>';	
 			else
 				return '<div class="alert alert-error">
-			<button data-dismiss="alert" class="close" type="button">×</button> Unable To Update Coupon Status.</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button> Unable To Update Coupon Status.</div>';	
 		}
 				
 	}
@@ -451,7 +453,7 @@ class Core_CPromotionalCodes
 				}
 			}
 			return '<div class="alert alert-success">
-			<button data-dismiss="alert" class="close" type="button">×</button> Coupon Code Generated Successfullly.</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button> Coupon Code Generated Successfullly.</div>';	
 				
 		}
 		
@@ -459,13 +461,13 @@ class Core_CPromotionalCodes
 		 {
 			if($_GET['page']=='')
 				return '<div class="alert alert-error">
-			<button data-dismiss="alert" class="close" type="button">×</button> Unable To Create Coupon Code.</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button> Unable To Create Coupon Code.</div>';	
 		 }
 	   }
 	   else
 	   {
 		  return '<div class="alert alert-error">
-			<button data-dismiss="alert" class="close" type="button">×</button> Unable To Create Coupon Code(Invalid Date Selection- Valid To Date Should Be Greater than Valid From Date).</div>';	
+			<button data-dismiss="alert" class="close" type="button">x</button> Unable To Create Coupon Code(Invalid Date Selection- Valid To Date Should Be Greater than Valid From Date).</div>';	
 	   }
 	}
 	

@@ -98,6 +98,20 @@ class Core_CAdminAddUsrRegsitration
                     $newuserid=$qry1->records[0]['user_id'];
                     $adrsql="insert into addressbook_table(user_id,contact_name,first_name,last_name,company,email,address,city,suburb,state,country,zip,phone_no,fax) values($newuserid,'Primary','$firstname','$lastname','','$email','$address','$city','','$state','$country','$zipcode','','')";
                     $qry1->updateQuery($adrsql);
+                    
+                    //Add the code to insert the welcome promotional code
+                    $sql_code = "SELECT `coupon_code` FROM `coupons_table` WHERE `coupan_name` = 'Welcome'";
+                    $obj_code = new Bin_Query();
+                    if($obj_code->executeQuery($sql_code))
+                    {
+                        $sql_coupon="INSERT INTO  coupon_user_relation_table(coupon_code, user_id, no_of_uses) VALUES ('" .$obj_code->records[0]['coupon_code']  ."'," .$newuserid .",0)";       
+            
+                        $objcode=new Bin_Query();
+                        if($objcode->updateQuery($sql_coupon))
+                        {
+                            
+                        }
+                    }
 
                 }else
                     $result = '<div class="alert alert-error">

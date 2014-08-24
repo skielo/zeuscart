@@ -774,37 +774,53 @@ class Core_CAdminUserRegistration
         				{
         					$result = '<div class="alert alert-success">
            					<button type="button" class="close" data-dismiss="alert">×</button> <strong> well done !</strong> Account has been Created Successfully</div>';
+                            
+                            //Add the code to insert the welcome promotional code
+                            $sql_code = "SELECT `coupon_code` FROM `coupons_table` WHERE `coupan_name` = 'Welcome'";
+                            $obj_code = new Bin_Query();
+                            if($obj_code->executeQuery($sql_code))
+                            {
+                                $sql_coupon="INSERT INTO  coupon_user_relation_table(coupon_code, user_id, no_of_uses) VALUES ('" .$obj_code->records[0]['coupon_code']  ."'," .$newuserid .",0)";       
+                    
+                                $objcode=new Bin_Query();
+                                if($objcode->updateQuery($sql_coupon))
+                                {
+                                    
+                                }
+                            }
         					
-        						$sqllogo="select set_id,site_logo,site_moto,admin_email from admin_settings_table where set_id='1'";
-        						$objlogo=new Bin_Query();
-        						$objlogo->executeQuery($sqllogo);
-        						$site_logo=$objlogo->records[0]['site_logo'];				
-        						$site_title=$objlogo->records[0]['site_moto'];				
-        						$admin_email=$objlogo->records[0]['admin_email'];
-        
-        
-        						//select mail setting
-        						$sqlMail="SELECT * FROM mail_messages_table WHERE mail_msg_id=1 AND mail_user='0'";
-        						$objMail=new Bin_Query();
-        						$objMail->executeQuery($sqlMail);
-        						$message=$objMail->records[0]['mail_msg'];
-        						$title=$objMail->records[0]['mail_msg_title'];
-        						$subject=$objMail->records[0]['mail_msg_subject'];
-        
-        						$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https://': 'http://';
-        						$dir = (dirname($_SERVER['PHP_SELF']) == "\\")?'':dirname($_SERVER['PHP_SELF']);
-        						$site = $protocol.$_SERVER['HTTP_HOST'].$dir;
-        						
-        						$site_logo=$site.'/'.$site_logo;
-        						
-        						$site_logo	=$site_logo;
-        
-        						$message = str_replace("[title]",$site_title,$message);
-        						$message = str_replace("[logo]",$site_logo,$message);
-        						$message = str_replace("[firstname]",$firstname,$message);
-        						$message = str_replace("[lastname]",$lastname,$message);
-        											
-        						$message = str_replace("[user_name]",$email,$message);		$message = str_replace("[password]",$_POST['txtpwd'],$message);	$message = str_replace("[site_email]",$admin_email,$message);	
+    						$sqllogo="select set_id,site_logo,site_moto,admin_email from admin_settings_table where set_id='1'";
+    						$objlogo=new Bin_Query();
+    						$objlogo->executeQuery($sqllogo);
+    						$site_logo=$objlogo->records[0]['site_logo'];				
+    						$site_title=$objlogo->records[0]['site_moto'];				
+    						$admin_email=$objlogo->records[0]['admin_email'];
+    
+    
+    						//select mail setting
+    						$sqlMail="SELECT * FROM mail_messages_table WHERE mail_msg_id=1 AND mail_user='0'";
+    						$objMail=new Bin_Query();
+    						$objMail->executeQuery($sqlMail);
+    						$message=$objMail->records[0]['mail_msg'];
+    						$title=$objMail->records[0]['mail_msg_title'];
+    						$subject=$objMail->records[0]['mail_msg_subject'];
+    
+    						$protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https://': 'http://';
+    						$dir = (dirname($_SERVER['PHP_SELF']) == "\\")?'':dirname($_SERVER['PHP_SELF']);
+    						$site = $protocol.$_SERVER['HTTP_HOST'].$dir;
+    						
+    						$site_logo=$site.'/'.$site_logo;
+    						
+    						$site_logo	=$site_logo;
+    
+    						$message = str_replace("[title]",$site_title,$message);
+    						$message = str_replace("[logo]",$site_logo,$message);
+    						$message = str_replace("[firstname]",$firstname,$message);
+    						$message = str_replace("[lastname]",$lastname,$message);
+    											
+    						$message = str_replace("[user_name]",$email,$message);		
+    						$message = str_replace("[password]",$_POST['txtpwd'],$message);	
+    						$message = str_replace("[site_email]",$admin_email,$message);	
         
         					Core_CAdminUserRegistration::sendingMail($email,$title,$message);
         					echo "<script> top.location = top.location; </script>";

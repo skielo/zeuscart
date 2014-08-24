@@ -1056,20 +1056,65 @@ VALUES ('".$cartid ."','" .$_GET['prodid'] ."','" .$val['qty'] ."','" .$date ."'
                         VALUES('".$displayname."','','', '".$email."','".$pswd."', '', '', 1, '".$date."', 0, 0, '".$_SERVER['REMOTE_ADDR']."', '', 0, 0)"; 
                         $obj = new Bin_Query();
 
-                        if ($obj -> updateQuery($sql)) {
-                            $result = "<div class='success_msgbox'>Account has been Created Successfully</div></br>";
-                            $pwd = $_POST['txtregpass'];
-                            $title = "Zeuscart";
-                            $mail_content = "Thank you for registering with us. Your Login Details are given below<br>
-							UserName :" . $email . "<br>Password:" . $pwd;
-                            Core_CUserRegistration::sendingMail($email, $title, $mail_content);
+                        if ($obj -> updateQuery($sql)) 
+                        {
+                            
+                            //Add the code to insert the welcome promotional code
+                            $sql_code = "SELECT `coupon_code` FROM `coupons_table` WHERE `coupan_name` = 'Welcome'";
+                            $obj_code = new Bin_Query();
+                            if($obj_code->executeQuery($sql_code))
+                            {
+                                $sql_coupon="INSERT INTO  coupon_user_relation_table(coupon_code, user_id, no_of_uses) VALUES ('" .$obj_code->records[0]['coupon_code']  ."'," .$newuserid .",0)";       
+                    
+                                $objcode=new Bin_Query();
+                                if($objcode->updateQuery($sql_coupon))
+                                {
+                                    
+                                }
+                            }   
+                            
+                            //Refactor to include the full email sending.
+                            $sqllogo="select set_id,site_logo,site_moto,admin_email from admin_settings_table where set_id='1'";
+                            $objlogo=new Bin_Query();
+                            $objlogo->executeQuery($sqllogo);
+                            $site_logo=$objlogo->records[0]['site_logo'];               
+                            $site_title=$objlogo->records[0]['site_moto'];              
+                            $admin_email=$objlogo->records[0]['admin_email'];
+    
+    
+                            //select mail setting
+                            $sqlMail="SELECT * FROM mail_messages_table WHERE mail_msg_id=1 AND mail_user='0'";
+                            $objMail=new Bin_Query();
+                            $objMail->executeQuery($sqlMail);
+                            $message=$objMail->records[0]['mail_msg'];
+                            $title=$objMail->records[0]['mail_msg_title'];
+                            $subject=$objMail->records[0]['mail_msg_subject'];
+    
+                            $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https://': 'http://';
+                            $dir = (dirname($_SERVER['PHP_SELF']) == "\\")?'':dirname($_SERVER['PHP_SELF']);
+                            $site = $protocol.$_SERVER['HTTP_HOST'].$dir;
+                            
+                            $site_logo=$site.'/'.$site_logo;
+                            
+                            $site_logo  =$site_logo;
+    
+                            $message = str_replace("[title]",$site_title,$message);
+                            $message = str_replace("[logo]",$site_logo,$message);
+                            $message = str_replace("[firstname]",$firstname,$message);
+                            $message = str_replace("[lastname]",$lastname,$message);
+                                                
+                            $message = str_replace("[user_name]",$email,$message);      
+                            $message = str_replace("[password]",$_POST['txtpwd'],$message); 
+                            $message = str_replace("[site_email]",$admin_email,$message);   
+        
+                            Core_CUserRegistration::sendingMail($email,$title,$message);
 
                             //-----------Setting Session Variables For Logging In ----------
 
                             $_SESSION['user_id'] = $obj -> insertid;
                             $_SESSION['user_name'] = $displayname;
 
-                            // 							$this->mergeSessionWithCartDatabase();
+                            //$this->mergeSessionWithCartDatabase();
                             header('Location:?do=showcart');
 
                         } else
