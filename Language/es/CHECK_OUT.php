@@ -46,12 +46,12 @@ define('UNIT_PRICE','Precio Unitario');
 define('SUB_TOTAL','Sub Total');
 define('SHIPPING_AMOUNT','Monto de Envio');
 define('TAX_APPLIED','Impuestos');
-define('COUPON_CODE','Codigo de descuento');
-define('ENTER_COUPON','Si tiene un codigo de descuento ingreselo en el cuadro de abajo y haga click');
+define('COUPON_CODE','C&oacute;digo de descuento');
+define('ENTER_COUPON','Si tiene un c&oacute;digo de descuento ingreselo en el cuadro de abajo y haga click');
 define('GRAND_TOTAL','Total');
 define('CONTINUE_SHOPPING','Continuar Comprando');
 define('PROCEED_TO_CHECKOUT','Hacer el Checkout');
-define('SIZE','Tamaño');
+define('SIZE','Tama&nacute;o');
 define('CHECK_OUT','Check out');
 
 
@@ -62,7 +62,7 @@ define('MEMBER_LOGIN','Ingreso de Miembros');
 define('E_MAIL_ADDRESS','Direcci&oacute;n de E-mail');
 define('PASSSWORD','Password');
 define('REMEMBER_ME','Recordarme');
-define('FORGOT_PASSWORD','Olvide el password');
+define('FORGOT_PASSWORD','Olvid&eacute; el password');
 define('ORR','O');
 define('NEED_HELP',' Necesita ayuda');
 define('OR_LOG_IN_USING_YOUR_USERNAME_AND_PASSWORD','o ingrese usando su nombre de usuario y Password');
@@ -83,20 +83,20 @@ define('ENTER_A_NEW_SHIPPING_ADDRESS','Ingresar una nueva direcci&oacute;n de en
 define('FIELDS_MARKED_WITH_AN','Los campos marcados con');
 define('ARE_REQUIRED','son requeridos');
 define('NAME','Nombre');
-define('COMPANY','Compañia');
+define('COMPANY','Compa&nacute;ia');
 define('ADDRESS','Direcci&oacute;n');
 define('CITY','Ciudad');
 define('SUBURB','Barrio');
 define('STATEPROVINCE','Estado/Provincia');
 define('COUNTRY','Pais');
-define('ZIPPOSTAL_CODE','Codigo Postal');
-define('PHONE','Telefono');
-define('MORE_ADDRESSES','Mas direcciones');
+define('ZIPPOSTAL_CODE','C&oactue;digo Postal');
+define('PHONE','Tel&eacute;fono');
+define('MORE_ADDRESSES','M&aacute;s direcciones');
 
 //shipping method
-define('SELECT_SHIPPING_METHOD','Seleccionar Metodo de Env&ácute;o');
+define('SELECT_SHIPPING_METHOD','Seleccionar Metodo de Env&iacute;o');
 define('SHIPPING','Envio');
-define('SHIPPING_COST','Costo de Envio');
+define('SHIPPING_COST','Costo de Env&iacute;o');
 define('TOTAL_WEIGHT','Peso Total');
 define('REACH_THE_DESTINATION','Encontrar el Destino');
 
@@ -107,8 +107,8 @@ define('PLEASE_SELECT_THE_SHIPPING_DURATION','Por favor seleccione la duraci&oac
 //payment method
 define('CHOOSE_YOUR_MODE_OF_PAYMENT','Elija un modo de pago');
 define('YOUR_CHECK_OUT_AMOUNT_IS','Su monto de Checkout es');
-define('ONLINE_PAYMENT_GATEWAYS','Online Payment Gateways');
-define('OFFLINE_PAYMENT_GATEWAYS','Offline Payment Gateways');
+define('ONLINE_PAYMENT_GATEWAYS','M&eacute;todo de pago Online');
+define('OFFLINE_PAYMENT_GATEWAYS','M&eacute;todo de pago Offline');
 
 
 //messages
@@ -117,13 +117,13 @@ define('PRODUCTS_DELETED_SUCCESSFULLY_FROM_YOUR_CART','El producto fue borrado d
 define('SORRY_YOU_HAVE_EXCEEDED_YOUR_COUPON_USING_LIMIT','Lo sentimos, Exedio el limite de su cupon de descuento.');
 define('SORRY_PURCHASE_AMOUNT_IS_TOO_LOW_TO_USE_YOUR_COUPON','Lo sentimos, El total de la compra es muy bajo para utilizar el cupon de descuento.');
 define('COUPON_NOT_ELIGBLE_FOR_YOU','El codigo de descuento es no aplicable para usted.');
-define('COUPON_CODE_EXPIRED','El codigo de descuento vencio.');
-define('COUPON_CODE_IS_NOT_ACTIVE','El codigo de descuento no esta activo.');
-define('INVALID_COUPON_CODE','Codigo de descuento invalido.');
+define('COUPON_CODE_EXPIRED','El c&oacute;digo de descuento vencio.');
+define('COUPON_CODE_IS_NOT_ACTIVE','El c&oacute;digo de descuento no esta activo.');
+define('INVALID_COUPON_CODE','C&oacute;digo de descuento invalido.');
 define('PLEASE_LOGIN_TO_USE_YOUR_COUPON','Por favor ingrese para utilizar el codigo de descuento.');
-define('COUPON_REDEEMED_SUCCESSFULLY','Codigo de descuento utilizado satisfactoriamente.');
-define('NO_CATEGORIES_IN_YOUR_CART_MATCHES_WITH_THE_COUPON_CATEGORIES','No hay categorias en su carrito de compras que concuerden con la categoria del cupon de descuento.');
-define('NO_CATEGORIES_ARE_APPLICABLE_FOR_THE_COUPON','No hay categorias que apliquen con este cupon de descuento.')
+define('COUPON_REDEEMED_SUCCESSFULLY','C&oacute;digo de descuento utilizado satisfactoriamente.');
+define('NO_CATEGORIES_IN_YOUR_CART_MATCHES_WITH_THE_COUPON_CATEGORIES','No hay categorias en su carrito de compras que concuerden con la categoria del c&oacute;digo de descuento.');
+define('NO_CATEGORIES_ARE_APPLICABLE_FOR_THE_COUPON','No hay categorias que apliquen con este c&oacute;digo de descuento.')
 
 
 

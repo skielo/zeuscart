@@ -41,7 +41,7 @@ define('ORDER_DATE','Fecha de la Orden');
 define('CLOSE_DATE','Fecha de Cierre');
 define('PAID_THROUGH','Pagado a tr&aacute;ves');
 define('SHIP_THROUGH','Envio  a tr&aacute;ves');
-define('SHIP_TRACK_ID','Número de env&iacute;o');
+define('SHIP_TRACK_ID','N&uacute;mero de env&iacute;o');
 define('BILLING_ADDRESS','Direcci&oacute;n de facturaci&oacute;n');
 define('SHIPPING_ADDRESS','Direcci&oacute;n de env&iacute;o');
 define('ITEM_DETAILS','Detalle del Item');

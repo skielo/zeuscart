@@ -34,7 +34,7 @@ define('MY_WISHLIST','Mi lista de deseos');
 define('PRODUCT_IMAGE','Imagen del Producto');
 define('PRODUCT','Producto');
 define('ADDED_ON','Agregado en');
-define('ACTION','Acción');
+define('ACTION','Acci&oacute;n');
 define('VIEW_PRODUCT','Ver Producto');
 define('SEND_TO_FRIEND','Enviar a un Amigo');
 define('ENTER_EMAIL_ID','Ingrese E-Mail Id');

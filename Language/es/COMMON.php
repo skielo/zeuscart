@@ -49,14 +49,14 @@ define('CATEGORIES','Categorias');
 
 
 //left menu
-define('ACCOUNT_DASHBOARD','Account Dashboard');
-define('ACCOUNT_INFORMATION','Account Information');
-define('CHANGE_PASSWORD','Change Password');
-define('ADDRESS_BOOK','Address Book');
-define('MY_ORDER','My Order');
-define('MY_PRODUCT_REVIEWS','My Product Reviews');
-define('NEWS_SUBCRIPTIONS','Newsletter Subcriptions');
-define('MY_DOWNLOADS','My Downloads');
+define('ACCOUNT_DASHBOARD','Dashboard de la cuenta');
+define('ACCOUNT_INFORMATION','Informaci&oacute;n de usuario');
+define('CHANGE_PASSWORD','Cambiar Password');
+define('ADDRESS_BOOK','Libreta de direcciones');
+define('MY_ORDER','Mis Ordenes');
+define('MY_PRODUCT_REVIEWS','Mis Reviews a productos');
+define('NEWS_SUBCRIPTIONS','Mis Suscripciones al Newsletter');
+define('MY_DOWNLOADS','Mis Descargas');
 
 
 //buttons

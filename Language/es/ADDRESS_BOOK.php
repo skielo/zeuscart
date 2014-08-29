@@ -32,7 +32,7 @@
 define('GROUP_NAME','Nombre de Grupo');
 define('FIRST_NAME','Nombre');
 define('LAST_NAME','Apellido');
-define('COMPANY','Compañia');
+define('COMPANY','Compa&nacute;ia');
 define('EMAIL_ADDRESS','Direcci&oacute;n de mail');
 define('ADDRESS','Direcci&oacute;n');
 define('CITY','Ciudad');
@@ -40,7 +40,7 @@ define('SUB_URB','Barrio');
 define('STATEPROVINCE','Estado/Provincia');
 define('COUNTRY','Pa&iacute;s');
 define('ZIPPOSTAL_CODE','Cod&iacute;go Postal');
-define('TELEPHONE','Telefono');
+define('TELEPHONE','Tel&eacute;fono');
 define('FAX','Fax');
 define('BILLING_ADDRESS','Direcci&oacute;n de Facturaci&oacute;n');
 define('SHIPPING_ADDRESS','Direcci&oacute;n de Env&iacute;o');
