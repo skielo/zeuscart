@@ -100,7 +100,6 @@ class Core_CWishList
 		$userid = $_SESSION['user_id'];
 		$date = date('Y-m-d');
 		$productid = $_GET['prodid'];
-		$currency_id=$_SESSION['currencysetting']['selected_currency_id'];
 		if( $userid!= '' and $date!= '' and $productid != '')
 		{
 			
@@ -117,7 +116,8 @@ class Core_CWishList
 				}
 				else
 				{
-				  $sqlinsert = "insert into wishlist_table (user_id,product_id,date_added,currency_id) values(".$userid.",".$productid.",'"  .$date."','".$currency_id."')";
+				  //Remove the currency Id because is not longer in the new data model.
+				  $sqlinsert = "insert into wishlist_table (user_id,product_id,date_added,comments) values(".$userid.",".$productid.",'"  .$date."','')";
 							
 					if($obj->updateQuery($sqlinsert))
 					{
